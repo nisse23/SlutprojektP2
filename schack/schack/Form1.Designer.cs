@@ -50,6 +50,7 @@
             this.panela6 = new System.Windows.Forms.Panel();
             this.panela5 = new System.Windows.Forms.Panel();
             this.panela1 = new System.Windows.Forms.Panel();
+            this.radioButtonWRook2 = new System.Windows.Forms.RadioButton();
             this.panela2 = new System.Windows.Forms.Panel();
             this.panela3 = new System.Windows.Forms.Panel();
             this.panela4 = new System.Windows.Forms.Panel();
@@ -109,7 +110,6 @@
             this.panelh7 = new System.Windows.Forms.Panel();
             this.panelh4 = new System.Windows.Forms.Panel();
             this.panelh8 = new System.Windows.Forms.Panel();
-            this.radioButtonWRook2 = new System.Windows.Forms.RadioButton();
             this.panela1.SuspendLayout();
             this.panelh1.SuspendLayout();
             this.SuspendLayout();
@@ -286,7 +286,7 @@
             this.radioButtonWRook1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.radioButtonWRook1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButtonWRook1.Image = global::schack.Properties.Resources.Rook2;
-            this.radioButtonWRook1.Location = new System.Drawing.Point(0, -2);
+            this.radioButtonWRook1.Location = new System.Drawing.Point(6, 3);
             this.radioButtonWRook1.Name = "radioButtonWRook1";
             this.radioButtonWRook1.Size = new System.Drawing.Size(52, 52);
             this.radioButtonWRook1.TabIndex = 80;
@@ -340,6 +340,23 @@
             this.panela1.Name = "panela1";
             this.panela1.Size = new System.Drawing.Size(50, 50);
             this.panela1.TabIndex = 84;
+            // 
+            // radioButtonWRook2
+            // 
+            this.radioButtonWRook2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButtonWRook2.AutoSize = true;
+            this.radioButtonWRook2.BackColor = System.Drawing.Color.Transparent;
+            this.radioButtonWRook2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButtonWRook2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.radioButtonWRook2.FlatAppearance.BorderSize = 0;
+            this.radioButtonWRook2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButtonWRook2.Image = global::schack.Properties.Resources.Rook2;
+            this.radioButtonWRook2.Location = new System.Drawing.Point(0, 0);
+            this.radioButtonWRook2.Name = "radioButtonWRook2";
+            this.radioButtonWRook2.Size = new System.Drawing.Size(50, 50);
+            this.radioButtonWRook2.TabIndex = 95;
+            this.radioButtonWRook2.UseVisualStyleBackColor = false;
+            this.radioButtonWRook2.CheckedChanged += new System.EventHandler(this.radioButtonWRook2_CheckedChanged);
             // 
             // panela2
             // 
@@ -874,23 +891,6 @@
             this.panelh8.Name = "panelh8";
             this.panelh8.Size = new System.Drawing.Size(50, 50);
             this.panelh8.TabIndex = 87;
-            // 
-            // radioButtonWRook2
-            // 
-            this.radioButtonWRook2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioButtonWRook2.AutoSize = true;
-            this.radioButtonWRook2.BackColor = System.Drawing.Color.Transparent;
-            this.radioButtonWRook2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radioButtonWRook2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.radioButtonWRook2.FlatAppearance.BorderSize = 0;
-            this.radioButtonWRook2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButtonWRook2.Image = global::schack.Properties.Resources.Rook2;
-            this.radioButtonWRook2.Location = new System.Drawing.Point(0, 0);
-            this.radioButtonWRook2.Name = "radioButtonWRook2";
-            this.radioButtonWRook2.Size = new System.Drawing.Size(50, 50);
-            this.radioButtonWRook2.TabIndex = 95;
-            this.radioButtonWRook2.UseVisualStyleBackColor = false;
-            this.radioButtonWRook2.CheckedChanged += new System.EventHandler(this.radioButtonWRook2_CheckedChanged);
             // 
             // Form1
             // 

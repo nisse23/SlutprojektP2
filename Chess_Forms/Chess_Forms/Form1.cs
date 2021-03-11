@@ -1,87 +1,156 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Chess
+namespace Chess_Forms
 {
-    class Program
+    public partial class Form1 : Form
     {
-        static board board = new board();
+        static board Myboard = new board();
+        public Button[,] buttonGrid = new Button[Myboard.size, Myboard.size];
+        public RadioButton[] pieceGrid = new RadioButton[32];
 
-        static void Main(string[] args)
+
+        public Form1()
         {
-            cell c = new cell(4, 4);
-            //board.Markallowedmove(c, "Bonde");
-            board.placePiecesInStart();
-            PrintBoard(board);
-            Console.ReadLine();
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CreateButtons();
+            GeneratePieces();
+
+
+            
+
+    }
+
+    private void GeneratePieces()
+        {
+            int pieceSize = panel1.Width / Myboard.size;
+            for (int i = 0; i < 17; i++)
+            {
+                pieceGrid[i] = new RadioButton();
+                pieceGrid[i].Width = pieceSize;
+                pieceGrid[i].Height = pieceSize;
+                pieceGrid[i].Appearance = Appearance.Button;
+                pieceGrid[i].Image = Properties.Resources.Rook;
+                pieceGrid[i].FlatStyle = FlatStyle.Flat;
+                panel1.Controls.Add(pieceGrid[i]);
+                pieceGrid[i].BringToFront();
+
+                if (i < 8)
+                {
+                    //pieceGrid[i].Click += MarkallowedTiles();
+
+                    pieceGrid[i].Location = new Point(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                    if (i % 2 == 0)
+                    {
+                        pieceGrid[i].BackColor = Color.Black;
+                    }
+                    else
+                    {
+                        pieceGrid[i].BackColor = Color.White;
+                    }
+                }
+                else if (i < 16)
+                {
+                    pieceGrid[i].Location = new Point(pieceGrid[i].Width * (i - 8), pieceGrid[i].Height * 6);
+                    if (i % 2 == 0)
+                    {
+                        pieceGrid[i].BackColor = Color.White;
+                    }
+                    else
+                    {
+                        pieceGrid[i].BackColor = Color.Black;
+                    }
+                }
+                else if(i <18)
+                {
+                    
+                    pieceGrid[i].Location = new Point(0, 0);
+                }
+                    
+
+            }
+        }
+
+        //private EventHandler MarkallowedTiles()
+        //{
+        //   // Myboard.Markallowedmove();
+        //}
+
+        private void CreateButtons()
+        {
+            int buttonSize = panel1.Width / Myboard.size;
+            for (int i = 0; i < Myboard.size; i++)
+            {
+                for (int j = 0; j < Myboard.size; j++)
+                {
+                    buttonGrid[i, j] = new Button();
+
+                    buttonGrid[i, j].Width = buttonSize;
+                    buttonGrid[i, j].Height = buttonSize;
+                    buttonGrid[i, j].Click += buttonClick;
+
+                    panel1.Controls.Add(buttonGrid[i, j]);
+                    buttonGrid[i, j].Location = new Point(i * buttonGrid[i, j].Width, buttonGrid[i, j].Height * j);
+                    if (((i + j) % 2) == 0) 
+                    {
+                        buttonGrid[i, j].BackColor = Color.White;
+                    }
+                    else
+                        buttonGrid[i, j].BackColor = Color.Black;
+                    buttonGrid[i, j].Tag = i +"," + j;
+                    buttonGrid[i, j].FlatStyle = FlatStyle.Flat;
+                    buttonGrid[i, j].FlatAppearance.BorderSize = 0;
+
+
+                }
+            }
+        }
+
+        private void buttonClick(object sender, EventArgs e)
+        {
+            int x = 4;
+            int y = 4;
+            cell currentcell = new cell(x, y);
+            Myboard.Markallowedmove(currentcell, "Bonde");
+
+
+            RadioButton piece = new RadioButton();
+            panel1.Controls.Add(piece);
+            piece.Location = new Point(x* 65, 65 * y);
+            piece.Image = Properties.Resources.Rook;
+            piece.Width = panel1.Width / Myboard.size;
+            piece.Height = panel1.Width / Myboard.size;
+            piece.Appearance = Appearance.Button;
+            piece.BackColor = Color.Black;
+            piece.FlatStyle = FlatStyle.Flat;
+            piece.BringToFront();
+            if ((x + y) % 2 == 0)
+            {
+                piece.BackColor = Color.White;
+            }
+            else
+            {
+                piece.BackColor = Color.Black;
+            }
+                
+
 
         }
 
-        private static void PrintBoard(board board)
+        private void buttonOmstart_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("  0  1  2  3  4  5  6  7");
-            //Console.WriteLine("  1  2  3  4  5  6  7  8");
-            //Console.WriteLine("  a  b  c  d  e  f  g  h");
-
-            //skriver ut spelplanen
-            for (int i = 0; i < board.size; i++)
-            {
-                Console.Write(i);
-                //Console.Write(i + 1);
-
-                for (int j = 0; j < board.size; j++)
-                {
-                    //Console.Write(j);
-                    cell c = board.TheGrid[i, j];
-                    if(c.OccupiedBy == "Bonde")
-                    {
-                        Console.Write(" B ");
-                    }
-                    else if (c.OccupiedBy == "Drottning")
-                    {
-                        Console.Write(" D ");
-
-                    }
-                    else if (c.OccupiedBy == "Kung")
-                    {
-                        Console.Write(" K ");
-
-                    }
-                    else if (c.OccupiedBy == "Häst")
-                    {
-                        Console.Write(" H ");
-
-                    }
-                    else if (c.OccupiedBy == "Löpare")
-                    {
-                        Console.Write(" L ");
-
-                    }
-                    else if (c.OccupiedBy == "Torn")
-                    {
-                        Console.Write(" T ");
-
-                    }
-                    else if(c.Occupied)
-                    {
-                        Console.Write(" X ");
-
-                    }
-                    else if (c.AllowedMove)
-                    {
-                        Console.Write(" + ");
-                    }
-
-                    else
-                    {
-                        Console.Write(" . ");
-                    }
-                }
-                Console.WriteLine();
-            }
+            Myboard.placePiecesInStart();
         }
     }
     public class board
@@ -98,7 +167,7 @@ namespace Chess
             {
                 for (int j = 0; j < size; j++)
                 {
-                    TheGrid[i,j] = new cell(i,j);
+                    TheGrid[i, j] = new cell(i, j);
 
                 }
             }
@@ -123,7 +192,7 @@ namespace Chess
                 }
             }
             TheGrid[7, 0].OccupiedBy = "Torn";
-            TheGrid[7,0].Occupied = true;
+            TheGrid[7, 0].Occupied = true;
             TheGrid[7, 7].OccupiedBy = "Torn";
             TheGrid[7, 7].Occupied = true;
 
@@ -165,9 +234,9 @@ namespace Chess
             TheGrid[0, 4].Occupied = true;
 
         }
-        public void Markallowedmove (cell currentCell, string piece)
+        public void Markallowedmove(cell currentCell, string piece)
         {
-           TheGrid[currentCell.Columnnumber, currentCell.Rownumber].Occupied = true;
+            TheGrid[currentCell.Columnnumber, currentCell.Rownumber].Occupied = true;
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
@@ -181,10 +250,10 @@ namespace Chess
                     //kan gå vertikalt och horisontellt
                     for (int i = 0; i < size; i++)
                     {
-                        if(currentCell.Columnnumber + i < size)
-                        TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber ].AllowedMove = true;
-                        if(currentCell.Rownumber + i < size)
-                        TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].AllowedMove = true;
+                        if (currentCell.Columnnumber + i < size)
+                            TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
+                        if (currentCell.Rownumber + i < size)
+                            TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
                         if (currentCell.Columnnumber - i >= 0)
                             TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
                         if (currentCell.Rownumber - i >= 0)
@@ -200,8 +269,8 @@ namespace Chess
                     TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 1].AllowedMove = true;
                     TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 1].AllowedMove = true;
                     TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 1].AllowedMove = true;
-                    TheGrid[currentCell.Columnnumber , currentCell.Rownumber + 1].AllowedMove = true;
-                    TheGrid[currentCell.Columnnumber , currentCell.Rownumber - 1].AllowedMove = true;
+                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber + 1].AllowedMove = true;
+                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber - 1].AllowedMove = true;
 
                     break;
                 case "Drottning":
@@ -275,11 +344,11 @@ namespace Chess
                 case "Bonde":
                     //bonde kan gå ett elr två steg fram
                     TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber].AllowedMove = true;
-                    Console.WriteLine(currentCell.Columnnumber - 2+" " + currentCell.Rownumber);
+
                     TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber].AllowedMove = true;
-                    Console.WriteLine(TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber].AllowedMove);
+
                     //den kan oxå ta snett fram om det står någon där
-                    if(TheGrid[currentCell.Rownumber + 1,currentCell.Columnnumber +1].Occupied)
+                    if (TheGrid[currentCell.Rownumber + 1, currentCell.Columnnumber + 1].Occupied)
                     {
                         TheGrid[currentCell.Rownumber + 1, currentCell.Columnnumber + 1].AllowedMove = true;
                     }

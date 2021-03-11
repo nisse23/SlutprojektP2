@@ -8,3 +8,13 @@ C:\Users\nilsh\source\repos\schack\schack\obj\Debug\schack.csproj.GenerateResour
 C:\Users\nilsh\source\repos\schack\schack\obj\Debug\schack.csproj.CoreCompileInputs.cache
 C:\Users\nilsh\source\repos\schack\schack\obj\Debug\schack.exe
 C:\Users\nilsh\source\repos\schack\schack\obj\Debug\schack.pdb
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\bin\Debug\schack.exe.config
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\bin\Debug\schack.exe
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\bin\Debug\schack.pdb
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.csprojAssemblyReference.cache
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.Form1.resources
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.Properties.Resources.resources
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.csproj.GenerateResource.cache
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.csproj.CoreCompileInputs.cache
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.exe
+C:\Users\nilsh\Documents\GitHub\SlutprojektP2\schack\schack\obj\Debug\schack.pdb
