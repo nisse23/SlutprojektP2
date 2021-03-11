@@ -1,0 +1,14 @@
+C:\Users\nilsh\source\repos\Chess\Chess\bin\Debug\Chess.exe.config
+C:\Users\nilsh\source\repos\Chess\Chess\bin\Debug\Chess.exe
+C:\Users\nilsh\source\repos\Chess\Chess\bin\Debug\Chess.pdb
+C:\Users\nilsh\source\repos\Chess\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
+C:\Users\nilsh\source\repos\Chess\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+C:\Users\nilsh\source\repos\Chess\Chess\obj\Debug\Chess.exe
+C:\Users\nilsh\source\repos\Chess\Chess\obj\Debug\Chess.pdb
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\bin\Debug\Chess.exe.config
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\bin\Debug\Chess.exe
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\bin\Debug\Chess.pdb
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\obj\Debug\Chess.csprojAssemblyReference.cache
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\obj\Debug\Chess.exe
+C:\Users\nilsh\Documents\GitHub\Chess\Chess\obj\Debug\Chess.pdb
