@@ -41,7 +41,7 @@ namespace Chess_Forms
                 pieceGrid[i].Width = pieceSize;
                 pieceGrid[i].Height = pieceSize;
                 pieceGrid[i].Appearance = Appearance.Button;
-                pieceGrid[i].Image = Properties.Resources.Rook;
+                pieceGrid[i].Image = Properties.Resources.BondeI;
                 pieceGrid[i].FlatStyle = FlatStyle.Flat;
                 panel1.Controls.Add(pieceGrid[i]);
                 pieceGrid[i].BringToFront();
@@ -79,9 +79,51 @@ namespace Chess_Forms
                     {
                         case 16:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 0, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.Rook;
                             break;
                         case 17:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 7, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.Rook;
+                            break;
+                        case 18:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 0, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.Rook;
+                            break;
+                        case 19:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 7, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.Rook;
+                            break;
+                        case 20:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 6, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.KnightI;
+                            break;
+                        case 21:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 1, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.KnightI;
+                            break;
+                        case 22:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 6, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.KnightI;
+                            break;
+                        case 23:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 1, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.KnightI;
+                            break;
+                        case 24:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 5, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            break;
+                        case 25:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 2, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            break;
+                        case 26:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 5, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            break;
+                        case 27:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 2, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.BishopIfylld;
                             break;
                     }
                 }
