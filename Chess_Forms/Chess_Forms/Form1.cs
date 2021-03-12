@@ -35,7 +35,7 @@ namespace Chess_Forms
     private void GeneratePieces()
         {
             int pieceSize = panel1.Width / Myboard.size;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < 32; i++)
             {
                 pieceGrid[i] = new RadioButton();
                 pieceGrid[i].Width = pieceSize;
@@ -72,10 +72,18 @@ namespace Chess_Forms
                         pieceGrid[i].BackColor = Color.Black;
                     }
                 }
-                else if(i <18)
+                else 
                 {
-                    
-                    pieceGrid[i].Location = new Point(0, 0);
+
+                    switch (i)
+                    {
+                        case 16:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 0, pieceGrid[i].Height * 0);
+                            break;
+                        case 17:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 7, pieceGrid[i].Height * 0);
+                            break;
+                    }
                 }
                     
 

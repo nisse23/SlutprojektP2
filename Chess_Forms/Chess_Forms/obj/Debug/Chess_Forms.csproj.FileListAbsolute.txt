@@ -8,3 +8,13 @@ C:\Users\nilsh\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\
 C:\Users\nilsh\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.csproj.CoreCompileInputs.cache
 C:\Users\nilsh\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.exe
 C:\Users\nilsh\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.pdb
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\bin\Debug\Chess_Forms.exe.config
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\bin\Debug\Chess_Forms.exe
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\bin\Debug\Chess_Forms.pdb
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.csprojAssemblyReference.cache
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.Form1.resources
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.Properties.Resources.resources
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.csproj.GenerateResource.cache
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.csproj.CoreCompileInputs.cache
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.exe
+C:\Users\02nihu16\Documents\GitHub\SlutprojektP2\Chess_Forms\Chess_Forms\obj\Debug\Chess_Forms.pdb
