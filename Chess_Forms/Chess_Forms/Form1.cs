@@ -45,12 +45,16 @@ namespace Chess_Forms
                 pieceGrid[i].FlatStyle = FlatStyle.Flat;
                 panel1.Controls.Add(pieceGrid[i]);
                 pieceGrid[i].BringToFront();
+                cell c;
 
                 if (i < 8)
                 {
                     //pieceGrid[i].Click += MarkallowedTiles();
 
                     pieceGrid[i].Location = new Point(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                    c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                    pieceGrid[i].Click += MarkallowedTiles(i, c);
+
                     if (i % 2 == 0)
                     {
                         pieceGrid[i].BackColor = Color.Black;
@@ -63,6 +67,8 @@ namespace Chess_Forms
                 else if (i < 16)
                 {
                     pieceGrid[i].Location = new Point(pieceGrid[i].Width * (i - 8), pieceGrid[i].Height * 6);
+                    c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                    pieceGrid[i].Click += MarkallowedTiles(i, c);
                     if (i % 2 == 0)
                     {
                         pieceGrid[i].BackColor = Color.White;
@@ -74,56 +80,125 @@ namespace Chess_Forms
                 }
                 else 
                 {
-
+                    //placerar ut torn, häst, löpare, kung och drottning
                     switch (i)
                     {
                         case 16:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 0, pieceGrid[i].Height * 0);
                             pieceGrid[i].Image = Properties.Resources.Rook;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
                             break;
                         case 17:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 7, pieceGrid[i].Height * 0);
                             pieceGrid[i].Image = Properties.Resources.Rook;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.Black;
+
                             break;
                         case 18:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 0, pieceGrid[i].Height * 7);
                             pieceGrid[i].Image = Properties.Resources.Rook;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.Black;
+
                             break;
                         case 19:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 7, pieceGrid[i].Height * 7);
                             pieceGrid[i].Image = Properties.Resources.Rook;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
                             break;
                         case 20:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 6, pieceGrid[i].Height * 7);
                             pieceGrid[i].Image = Properties.Resources.KnightI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
                             break;
                         case 21:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 1, pieceGrid[i].Height * 7);
                             pieceGrid[i].Image = Properties.Resources.KnightI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
                             break;
                         case 22:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 6, pieceGrid[i].Height * 0);
                             pieceGrid[i].Image = Properties.Resources.KnightI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
                             break;
                         case 23:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 1, pieceGrid[i].Height * 0);
                             pieceGrid[i].Image = Properties.Resources.KnightI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
                             break;
                         case 24:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 5, pieceGrid[i].Height * 7);
                             pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
                             break;
                         case 25:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 2, pieceGrid[i].Height * 7);
                             pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+
                             break;
                         case 26:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 5, pieceGrid[i].Height * 0);
                             pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
                             break;
                         case 27:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 2, pieceGrid[i].Height * 0);
                             pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
+                            break;
+                        case 28:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 3, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.QueenI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+                            break;
+                        case 29:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 4, pieceGrid[i].Height * 7);
+                            pieceGrid[i].Image = Properties.Resources.KingI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            break;
+                        case 30:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 4, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.KingI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+                            pieceGrid[i].BackColor = Color.White;
+
+                            break;
+                        case 31:
+                            pieceGrid[i].Location = new Point(pieceGrid[i].Width * 3, pieceGrid[i].Height * 0);
+                            pieceGrid[i].Image = Properties.Resources.QueenI;
+                            c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
+                            pieceGrid[i].Click += MarkallowedTiles(i, c);
+
                             break;
                     }
                 }
@@ -132,10 +207,108 @@ namespace Chess_Forms
             }
         }
 
-        //private EventHandler MarkallowedTiles()
-        //{
-        //   // Myboard.Markallowedmove();
-        //}
+        private EventHandler MarkallowedTiles(int i, cell currentCell)
+        {
+            string piece;
+            if(i<8)
+            {
+                //svart bonde
+                piece = "Bonde";
+            }
+            else if(i<16)
+            {
+                //vit bonde
+                piece = "Bonde";
+            }
+            else
+            {
+                piece = "Bonde";
+                //switch (i)
+                //{
+                //    case 16:
+                //        //svart torn
+                //        piece = "Torn";
+                //        break;
+                //    case 17:
+                //        //svart torn
+                //        piece = "Torn";
+                //        break;
+                //    case 18:
+                //        //vit torn
+                //        piece = "Torn";
+                //        break;
+                //    case 19:
+                //        //vit torn
+                //        piece = "Torn";
+                //        break;
+                //    case 20:
+                //        //vit häst
+                //        piece = "Häst";
+                //        break;
+                //    case 21:
+                //        //vit häst
+                //        piece = "Häst";
+                //        break;
+                //    case 22:
+                //        //svart häst
+                //        piece = "Häst";
+
+                //        break;
+                //    case 23:
+                //        //svart häst
+                //        piece = "Häst";
+                //        break;
+                //    case 24:
+                //        //vit löpare
+                //        piece = "Löpare";
+                //        break;
+                //    case 25:
+                //        //vit löpare
+                //        piece = "Löpare";
+                //        break;
+                //    case 26:
+                //        //svart löpare
+                //        piece = "löpare";
+                //        break;
+                //    case 27:
+                //        //svart löpare
+                //        piece = "löpare";
+                //        break;
+                //    case 28:
+                //        //vit drottning
+                //        piece = "Drottning";
+                //        break;
+                //    case 29:
+                //        //vit kung
+                //        piece = "Kung";
+                //        break;
+                //    case 30:
+                //        //svart drottning
+                //        piece = "Drottning";
+                //        break;
+                //    case 31:
+                //        //svart kung
+                //        piece = "Kung";
+                //        break;
+                //    default:
+                //        MessageBox.Show("error");
+                //        piece = "Bonde";
+                //        break;
+                //}
+
+            }
+            Myboard.Markallowedmove(currentCell, piece);
+            for (int x = 0; x < Myboard.size; x++)
+            {
+                for (int j = 0; j < Myboard.size; j++)
+                {
+                    if (Myboard.TheGrid[x, j].AllowedMove)
+                    {
+                        buttonGrid[i, j].BackColor = Color.Green;
+                    }
+                }
+            }
+        }
 
         private void CreateButtons()
         {
