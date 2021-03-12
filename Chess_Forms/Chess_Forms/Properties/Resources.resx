@@ -127,16 +127,22 @@
   <data name="BondeI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BondeI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="KingI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\KingI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Rook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="KnightI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\KnightI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BishopS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BishopS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BishopIfylld" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BishopIfylld.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="KingI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\KingI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="QueenS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QueenS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

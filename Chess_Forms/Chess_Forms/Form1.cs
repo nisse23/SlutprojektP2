@@ -172,14 +172,14 @@ namespace Chess_Forms
                             break;
                         case 26:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 5, pieceGrid[i].Height * 0);
-                            pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            pieceGrid[i].Image = Properties.Resources.BishopS;
                             c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
                             pieceGrid[i].Tag = c;
                             pieceGrid[i].Click += MarkallowedTiles;
                             break;
                         case 27:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 2, pieceGrid[i].Height * 0);
-                            pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                            pieceGrid[i].Image = Properties.Resources.BishopS;
                             c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
                             pieceGrid[i].Tag = c;
                             pieceGrid[i].Click += MarkallowedTiles;
@@ -212,7 +212,7 @@ namespace Chess_Forms
                             break;
                         case 31:
                             pieceGrid[i].Location = new Point(pieceGrid[i].Width * 3, pieceGrid[i].Height * 0);
-                            pieceGrid[i].Image = Properties.Resources.QueenI;
+                            pieceGrid[i].Image = Properties.Resources.QueenS;
                             c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
                             pieceGrid[i].Tag = c;
                             pieceGrid[i].Click += MarkallowedTiles;

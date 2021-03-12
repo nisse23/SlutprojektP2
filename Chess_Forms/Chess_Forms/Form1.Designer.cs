@@ -67,7 +67,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Image = global::Chess_Forms.Properties.Resources.KingI;
+            this.radioButton1.Image = global::Chess_Forms.Properties.Resources.QueenS;
             this.radioButton1.Location = new System.Drawing.Point(612, 207);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(85, 65);

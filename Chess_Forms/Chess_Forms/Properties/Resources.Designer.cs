@@ -73,6 +73,16 @@ namespace Chess_Forms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BishopS {
+            get {
+                object obj = ResourceManager.GetObject("BishopS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BondeI {
             get {
                 object obj = ResourceManager.GetObject("BondeI", resourceCulture);
@@ -116,6 +126,16 @@ namespace Chess_Forms.Properties {
         internal static System.Drawing.Bitmap QueenI {
             get {
                 object obj = ResourceManager.GetObject("QueenI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QueenS {
+            get {
+                object obj = ResourceManager.GetObject("QueenS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
