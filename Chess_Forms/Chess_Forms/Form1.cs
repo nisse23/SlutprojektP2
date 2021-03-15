@@ -31,7 +31,7 @@ namespace Chess_Forms
 
         }
 
-    private void GeneratePieces()
+        private void GeneratePieces()
         {
             Myboard.placePiecesInStart();
 
@@ -50,6 +50,7 @@ namespace Chess_Forms
                     pieceGrid[i].Appearance = Appearance.Button;
                     pieceGrid[i].Image = Properties.Resources.BondeI;
                     pieceGrid[i].FlatStyle = FlatStyle.Flat;
+                    //pieceGrid[i].Click += MarkallowedTiles;
                     panel1.Controls.Add(pieceGrid[i]);
                     pieceGrid[i].BringToFront();
                     cell cell = Myboard.TheGrid[z, j];
@@ -63,7 +64,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceGrid[i].Width * j, pieceGrid[i].Height * 1);
                                 c = new cell(pieceGrid[i].Width * i, pieceGrid[i].Height * 1);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles; 
                                 if (i % 2 == 0)
                                 {
                                     pieceGrid[i].BackColor = Color.White;
@@ -79,8 +79,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.Rook;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.Black;
                                 i++;
                                 break;
@@ -89,7 +87,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.Rook;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.Black;
                                 i++;
                                 break;
@@ -98,7 +95,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.KnightI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
@@ -107,7 +103,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.KnightI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 i++;
                                 break;
                             case "VLöpare1":
@@ -115,7 +110,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.BishopIfylld;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 i++;
                                 break;
                             case "VLöpare2":
@@ -123,7 +117,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.BishopIfylld;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
@@ -132,7 +125,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.KingI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 i++;
 
                                 break;
@@ -141,7 +133,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.QueenI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 0);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
@@ -151,7 +142,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceGrid[i].Width * j, pieceGrid[i].Height * 6);
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 6);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
 
                                 if (i % 2 == 0)
                                 {
@@ -169,7 +159,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.Rook;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
 
                                 i++;
@@ -179,7 +168,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.Rook;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.Black;
                                 i++;
                                 break;
@@ -188,7 +176,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.KnightI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
@@ -197,7 +184,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.KnightI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 i++;
                                 break;
                             case "SLöpare1":
@@ -207,7 +193,6 @@ namespace Chess_Forms
 
                                 pieceGrid[i].Image = Properties.Resources.BishopIfylld;
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 i++;
                                 break;
                             case "SLöpare2":
@@ -215,7 +200,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.BishopIfylld;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
@@ -224,7 +208,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.KingI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 i++;
                                 break;
                             case "SDrottning":
@@ -232,7 +215,6 @@ namespace Chess_Forms
                                 pieceGrid[i].Image = Properties.Resources.QueenI;
                                 c = new cell(pieceGrid[i].Width * j, pieceGrid[i].Height * 7);
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
-                                pieceGrid[i].Click += MarkallowedTiles;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
@@ -302,33 +284,36 @@ namespace Chess_Forms
 
         private void buttonClick(object sender, EventArgs e)
         {
-            int x = 4;
-            int y = 4;
-            cell currentcell = new cell(x, y);
-            Myboard.Markallowedmove(currentcell, "Bonde");
+
+            Button b = (Button)sender;
+            //hämtar den checkade radiobuttonen
+            var rb = panel1.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+            string s = (string)rb.Tag;
+            string[] tag = s.Split(' ');
+            //MessageBox.Show(rb.Location.ToString());
+            //if (b.BackColor == Color.Green)
+            //{
+                MovePiece(rb, b, tag[0]);
+            
 
 
-            RadioButton piece = new RadioButton();
-            panel1.Controls.Add(piece);
-            piece.Location = new Point(x* 65, 65 * y);
-            piece.Image = Properties.Resources.Rook;
-            piece.Width = panel1.Width / Myboard.size;
-            piece.Height = panel1.Width / Myboard.size;
-            piece.Appearance = Appearance.Button;
-            piece.BackColor = Color.Black;
-            piece.FlatStyle = FlatStyle.Flat;
-            piece.BringToFront();
-            if ((x + y) % 2 == 0)
-            {
-                piece.BackColor = Color.White;
-            }
-            else
-            {
-                piece.BackColor = Color.Black;
-            }
-                
+        }
 
-
+        private void MovePiece(RadioButton rb, Button b, string piece)
+        {
+            //ändra i array
+            int width = rb.Location.X / 65;
+            int height = rb.Location.Y / 65;
+            int newWidth = b.Location.X / 65;
+            int newHeight = b.Location.Y / 65;
+            Myboard.TheGrid[width, height].Occupied = false;
+            Myboard.TheGrid[width, height].OccupiedBy = string.Empty;
+            Myboard.TheGrid[newWidth, newHeight].Occupied = true;
+            Myboard.TheGrid[newWidth, newHeight].OccupiedBy = piece;
+            //MessageBox.Show("tjo");
+            //change location of radiobutton
+            rb.Location = b.Location;
         }
 
         private void buttonOmstart_Click(object sender, EventArgs e)
