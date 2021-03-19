@@ -14,9 +14,18 @@ namespace Chess
         {
             cell c = new cell(4, 4);
             //board.Markallowedmove(c, "Bonde");
-            board.placePiecesInStart();
-            PrintBoard(board);
-            Console.ReadLine();
+            //board.placePiecesInStart();
+            //PrintBoard(board);
+            //Console.WriteLine("x: ");
+            //int x = int.Parse(Console.ReadLine());
+            //Console.WriteLine("y: ");
+            //int y = int.Parse(Console.ReadLine());
+            //if ((x + 2 < 8 && x + 2 >= 0) && (y + 1 < 8 && y + 1 >= 0))
+            //{
+            //    Console.WriteLine("tjena");
+            //}
+
+                Console.ReadLine();
 
         }
 
