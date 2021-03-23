@@ -70,7 +70,7 @@ namespace Chess_Forms
                             case "VBonde":
                                 
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.BondeI;
+                                pieceGrid[i].Image = Properties.Resources.VitPawn;
                                 pieceGrid[i].Tag = "VBonde" + " " + i;
                                 if (i % 2 == 0)
                                 {
@@ -84,53 +84,53 @@ namespace Chess_Forms
                                 break;
                             case "VTorn1":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.Rook;
+                                pieceGrid[i].Image = Properties.Resources.VitRook;
                                 pieceGrid[i].Tag = "VTorn1" + " " + i;
                                 pieceGrid[i].BackColor = Color.Black;
                                 i++;
                                 break;
                             case "VTorn2":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.Rook;
+                                pieceGrid[i].Image = Properties.Resources.VitRook;
                                 pieceGrid[i].Tag = "VTorn2" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
                             case "VHäst1":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.KnightI;
+                                pieceGrid[i].Image = Properties.Resources.VitKnight;
                                 pieceGrid[i].Tag = "VHäst1" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
                             case "VHäst2":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.KnightI;
+                                pieceGrid[i].Image = Properties.Resources.VitKnight;
                                 pieceGrid[i].Tag = "VHäst2" + " " + i;
                                 i++;
                                 break;
                             case "VLöpare1":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                                pieceGrid[i].Image = Properties.Resources.VitBishop1;
                                 pieceGrid[i].Tag = "VLöpare1" + " " + i;
                                 i++;
                                 break;
                             case "VLöpare2":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                                pieceGrid[i].Image = Properties.Resources.VitBishop1;
                                 pieceGrid[i].Tag = "VLöpare2" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
                             case "VKung":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.KingI;
+                                pieceGrid[i].Image = Properties.Resources.VitKung;
                                 pieceGrid[i].Tag = "VKung" + " " + i;
                                 i++;
                                 break;
                             case "VDrottning":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.QueenI;
+                                pieceGrid[i].Image = Properties.Resources.VitQueen;
                                 pieceGrid[i].Tag = "VDrottning" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
@@ -139,7 +139,7 @@ namespace Chess_Forms
                             case "SBonde":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Tag = "SBonde" + " " + i;
-                                pieceGrid[i].Image = Properties.Resources.BondeI;
+                                pieceGrid[i].Image = Properties.Resources.SvartPawn1;
                                 if (i % 2 == 0)
                                 {
                                     pieceGrid[i].BackColor = Color.Black;
@@ -152,7 +152,7 @@ namespace Chess_Forms
                                 break;
                             case "STorn1":
                                 pieceGrid[i].Location = new Point(pieceSize * 0, pieceSize * 0);
-                                pieceGrid[i].Image = Properties.Resources.Rook;
+                                pieceGrid[i].Image = Properties.Resources.SvartRook1;
                                 pieceGrid[i].Tag = "STorn1" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 pieceGrid[i].BringToFront();
@@ -160,21 +160,21 @@ namespace Chess_Forms
                                 break;
                             case "STorn2":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.Rook;
+                                pieceGrid[i].Image = Properties.Resources.SvartRook1;
                                 pieceGrid[i].Tag = "STorn2" + " " + i;
                                 pieceGrid[i].BackColor = Color.Black;
                                 i++;
                                 break;
                             case "SHäst1":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.KnightI;
+                                pieceGrid[i].Image = Properties.Resources.SvartKnight1;
                                 pieceGrid[i].Tag = "SHäst1" + " " + i;
                                 pieceGrid[i].BackColor = Color.Black;
                                 i++;
                                 break;
                             case "SHäst2":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.KnightI;
+                                pieceGrid[i].Image = Properties.Resources.SvartKnight1;
                                 pieceGrid[i].Tag = "SHäst2" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
 
@@ -183,26 +183,26 @@ namespace Chess_Forms
                             case "SLöpare1":
 
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                                pieceGrid[i].Image = Properties.Resources.SvartBishop2;
                                 pieceGrid[i].Tag = "SLöpare1" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;
                                 break;
                             case "SLöpare2":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.BishopIfylld;
+                                pieceGrid[i].Image = Properties.Resources.SvartBishop2;
                                 pieceGrid[i].Tag = "SLöpare2" + " " + i;
                                 i++;
                                 break;
                             case "SKung":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.KingI;
+                                pieceGrid[i].Image = Properties.Resources.SvartKung1;
                                 pieceGrid[i].Tag = "SKung" + " " + i;
                                 i++;
                                 break;
                             case "SDrottning":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
-                                pieceGrid[i].Image = Properties.Resources.QueenI;
+                                pieceGrid[i].Image = Properties.Resources.SvartQueen1;
                                 pieceGrid[i].Tag = "SDrottning" + " " + i;
                                 pieceGrid[i].BackColor = Color.White;
                                 i++;

@@ -107,5 +107,62 @@
   <ItemGroup>
     <None Include="Resources\QueenS.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartBishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartKnight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartKung.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartPawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartBishop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartBishop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartKnight1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartKung1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartPawn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartQueen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SvartRook1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitBishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitBishop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitKnight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitKung.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitPawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitQueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitRook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VitBishop2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
