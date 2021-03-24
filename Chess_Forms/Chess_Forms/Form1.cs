@@ -399,8 +399,8 @@ namespace Chess_Forms
             TheGrid[5, 7].OccupiedBy = "VLöpare2";
             TheGrid[5, 7].Occupied = true;
 
-            TheGrid[4, 4].OccupiedBy = "VKung";
-            TheGrid[4, 4].Occupied = true;
+            TheGrid[4, 7].OccupiedBy = "VKung";
+            TheGrid[4, 7].Occupied = true;
 
             TheGrid[3, 7].OccupiedBy = "VDrottning";
             TheGrid[3, 7].Occupied = true;
