@@ -27,7 +27,6 @@ namespace Chess_Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Myboard.placePiecesInStart();
             //skapar spelplanen
             CreateButtons();
             //placerar ut pjäserna
@@ -218,37 +217,63 @@ namespace Chess_Forms
         //markerar de ställen som pjäsen får gå
         private void MarkallowedTiles(object sender, EventArgs e)
         {
-            for (int z = 0; z < Myboard.size; z++)
-            {
-                for (int j = 0; j < Myboard.size; j++)
-                {
-                    buttonGrid[j, z].FlatAppearance.BorderSize = 0;
-
-
-                }
-            }
             RadioButton r = (RadioButton)sender;
-            string s = (string)r.Tag;
-            string[] tag = s.Split(' '); 
-            string piece = tag[0];
-            int i = int.Parse(tag[1]);
-            cell c = new cell(pieceGrid[i].Location.Y / 65, pieceGrid[i].Location.X / 65);
-            MessageBox.Show(c.Columnnumber+ " "+ c.Rownumber);
-            Myboard.Markallowedmove(c, piece);
-            for (int x = 0; x < Myboard.size; x++)
-            {
-                for (int j = 0; j < Myboard.size; j++)
-                {
-                    cell cell = Myboard.TheGrid[j, x];
+            //RadioButton r1 = new RadioButton();
+            
+            //int y = r.Location.Y / 65;
+            //int a = r.Location.X / 65;
+            
+            
+            //if (buttonGrid[a, y].FlatAppearance.BorderSize == 4)
+            //{
+            //    for (int i = 0; i < 32; i++)
+            //    {
+            //        if (pieceGrid[i].Location == buttonGrid[a, y].Location)
+            //        {
+            //            r1 = pieceGrid[i];
+            //            string s1 = (string)r1.Tag;
+            //            string[] tag1 = s1.Split(' ');
+            //            string piece1 = tag1[0];
+            //            MovePiece(r1, buttonGrid[a, y], piece1);
+            //            panel1.Controls.Remove(r);
+            //        }
 
-                    if (cell.AllowedMove)
+            //    }
+                
+            //}
+            //else
+            //{
+                for (int z = 0; z < Myboard.size; z++)
+                {
+                    for (int j = 0; j < Myboard.size; j++)
                     {
-                        MessageBox.Show(j.ToString() +"," +  x.ToString() + "y,x allowed");
-                        buttonGrid[j, x].FlatAppearance.BorderSize = 4;
-                        buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
+                        buttonGrid[j, z].FlatAppearance.BorderSize = 0;
+
+
                     }
                 }
-            }
+                string s = (string)r.Tag;
+                string[] tag = s.Split(' ');
+                string piece = tag[0];
+                int i = int.Parse(tag[1]);
+                cell c = new cell(pieceGrid[i].Location.Y / 65, pieceGrid[i].Location.X / 65);
+                MessageBox.Show(c.Columnnumber + " " + c.Rownumber);
+                Myboard.Markallowedmove(c, piece);
+                for (int x = 0; x < Myboard.size; x++)
+                {
+                    for (int j = 0; j < Myboard.size; j++)
+                    {
+                        cell cell = Myboard.TheGrid[j, x];
+
+                        if (cell.AllowedMove)
+                        {
+                            //MessageBox.Show(j.ToString() +"," +  x.ToString() + "y,x allowed");
+                            buttonGrid[j, x].FlatAppearance.BorderSize = 4;
+                            buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
+                        }
+                    }
+                }
+           //}
         }
 
         private void CreateButtons()
@@ -294,7 +319,9 @@ namespace Chess_Forms
             string str = (string)b.Tag;
             string[] btag = str.Split(',');
             MessageBox.Show(btag[0] + " " + btag[1]);
-
+            var rb1 = panel1.Controls.OfType<RadioButton>()
+                                          .FirstOrDefault(r => r.Checked);
+            
             if (b.FlatAppearance.BorderSize == 4)
             {
 
@@ -375,15 +402,15 @@ namespace Chess_Forms
         public void placePiecesInStart()
         {
             //svart
-           
-           
-            //for (int j = 7; j >= 0; j--)
-            //{
-            //    TheGrid[j, 6].Occupied = true;
-            //    TheGrid[j, 6].OccupiedBy = "VBonde";
 
-            //}
-            
+
+            for (int j = 7; j >= 0; j--)
+            {
+                TheGrid[j, 6].Occupied = true;
+                TheGrid[j, 6].OccupiedBy = "VBonde";
+
+            }
+
             TheGrid[0, 7].OccupiedBy = "VTorn1";
             TheGrid[0, 7].Occupied = true;
             TheGrid[7, 7].OccupiedBy = "VTorn2";
@@ -405,11 +432,11 @@ namespace Chess_Forms
             TheGrid[3, 7].OccupiedBy = "VDrottning";
             TheGrid[3, 7].Occupied = true;
             //svart
-            //for (int j = 7; j >= 0; j--)
-            //{
-            //    TheGrid[j, 1].Occupied = true;
-            //    TheGrid[j, 1].OccupiedBy = "SBonde";
-            //}
+            for (int j = 7; j >= 0; j--)
+            {
+                TheGrid[j, 1].Occupied = true;
+                TheGrid[j, 1].OccupiedBy = "SBonde";
+            }
             TheGrid[0, 0].OccupiedBy = "STorn1";
             TheGrid[0, 0].Occupied = true;
             TheGrid[7, 0].OccupiedBy = "STorn2";
