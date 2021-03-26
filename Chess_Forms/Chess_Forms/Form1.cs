@@ -319,6 +319,8 @@ namespace Chess_Forms
             string str = (string)b.Tag;
             string[] btag = str.Split(',');
             MessageBox.Show(btag[0] + " " + btag[1]);
+
+            MessageBox.Show(Myboard.TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied + " ");
             var rb1 = panel1.Controls.OfType<RadioButton>()
                                           .FirstOrDefault(r => r.Checked);
             
@@ -340,13 +342,9 @@ namespace Chess_Forms
                     for (int j = 0; j < Myboard.size; j++)
                     {
                         buttonGrid[j, z].FlatAppearance.BorderSize = 0;
-
-
                     }
                 }
             }
-
-
         }
 
         private void MovePiece(RadioButton rb, Button b, string piece)
@@ -404,12 +402,12 @@ namespace Chess_Forms
             //svart
 
 
-            for (int j = 7; j >= 0; j--)
-            {
-                TheGrid[j, 6].Occupied = true;
-                TheGrid[j, 6].OccupiedBy = "VBonde";
+            //for (int j = 7; j >= 0; j--)
+            //{
+            //    TheGrid[j, 6].Occupied = true;
+            //    TheGrid[j, 6].OccupiedBy = "VBonde";
 
-            }
+            //}
 
             TheGrid[0, 7].OccupiedBy = "VTorn1";
             TheGrid[0, 7].Occupied = true;
@@ -432,11 +430,11 @@ namespace Chess_Forms
             TheGrid[3, 7].OccupiedBy = "VDrottning";
             TheGrid[3, 7].Occupied = true;
             //svart
-            for (int j = 7; j >= 0; j--)
-            {
-                TheGrid[j, 1].Occupied = true;
-                TheGrid[j, 1].OccupiedBy = "SBonde";
-            }
+            //for (int j = 7; j >= 0; j--)
+            //{
+            //    TheGrid[j, 1].Occupied = true;
+            //    TheGrid[j, 1].OccupiedBy = "SBonde";
+            //}
             TheGrid[0, 0].OccupiedBy = "STorn1";
             TheGrid[0, 0].Occupied = true;
             TheGrid[7, 0].OccupiedBy = "STorn2";
@@ -667,7 +665,7 @@ namespace Chess_Forms
                             else
                                 TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber + i].AllowedMove = true;
                         }
-                        if ((currentCell.Columnnumber + i < size && currentCell.Columnnumber + i >= 0)  && (currentCell.Rownumber - i >= 0 && currentCell.Rownumber - i < size) && bot_left)
+                        if (currentCell.Columnnumber + i < size  && currentCell.Rownumber - i >= 0  && bot_left)
                         {
                             if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber - i].Occupied)
                             {
@@ -676,11 +674,14 @@ namespace Chess_Forms
                                 {
                                     TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber - i].AllowedMove = true;
                                 }
-
                                 bot_left = false;
                             }
                             else
+                            {
                                 TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber - i].AllowedMove = true;
+
+                            }
+
                         }
                         if ((currentCell.Columnnumber - i >= 0 && currentCell.Columnnumber - i < size) && (currentCell.Rownumber - i >= 0 && currentCell.Rownumber - i< size) && top_left)
                         {
@@ -692,14 +693,15 @@ namespace Chess_Forms
                                 {
                                     TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
                                 }
-
-                                bot_left = false;
+                                top_left = false;
                             }
                             else
                                 TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
                         }
-                        if ((currentCell.Columnnumber - i >= 0 && currentCell.Columnnumber - i < size) && (currentCell.Rownumber + i < size && currentCell.Rownumber + i >=0 ) && top_right)
+                        if (currentCell.Columnnumber - i >= 0 && currentCell.Rownumber + i < size && top_right)
                         {
+                            MessageBox.Show("top_right");
+
                             if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber + i].Occupied)
                             {
                                 char[] c = TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber + i].OccupiedBy.ToCharArray();
@@ -707,10 +709,15 @@ namespace Chess_Forms
                                 {
                                     TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber + i].AllowedMove = true;
                                 }
+                                MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i));
+
                                 top_right = false;
                             }
                             else
+                            {
                                 TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber + i].AllowedMove = true;
+                                MessageBox.Show("ajdå");
+                            }
                         }
                     }
                     break;
@@ -764,7 +771,7 @@ namespace Chess_Forms
                                     TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
                                 }
 
-                                bot_left = false;
+                                top_left = false;
                             }
                             else
                                 TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
@@ -1050,7 +1057,7 @@ namespace Chess_Forms
                                     TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
                                 }
 
-                                bot_left = false;
+                                top_left = false;
                             }
                             else
                                 TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
@@ -1204,7 +1211,7 @@ namespace Chess_Forms
                                     TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
                                 }
 
-                                bot_left = false;
+                                top_left = false;
                             }
                             else
                                 TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].AllowedMove = true;
@@ -1311,7 +1318,7 @@ namespace Chess_Forms
                 case "VHäst1":
                 case "VHäst2":
                     //hästen kan gå två steg fram och ett åt sidan
-                    if ((currentCell.Columnnumber + 2 < size && currentCell.Columnnumber + 2 >= 0) && (currentCell.Rownumber + 1 < size && currentCell.Rownumber + 1 >=0))
+                    if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber + 1 < size )
                     {
                         MessageBox.Show(currentCell.Columnnumber + " " + currentCell.Rownumber + " col + row + häst");
                         if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1].Occupied)
@@ -1325,7 +1332,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber - 2 >= 0 && currentCell.Columnnumber - 2 < size) && (currentCell.Rownumber + 1 < size && currentCell.Rownumber + 1 >= 0 ))
+                    if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber + 1 < size)
                     {
                         if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].Occupied)
                         {
@@ -1338,7 +1345,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber - 2 < size && currentCell.Columnnumber - 2 >= 0) && (currentCell.Rownumber - 1 >= 0 && currentCell.Rownumber - 1 < size))
+                    if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber - 1 >= 0)
                     {
 
                         if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].Occupied)
@@ -1352,7 +1359,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber + 1 < size && currentCell.Columnnumber + 1 >=0) && (currentCell.Rownumber - 2 < size && currentCell.Rownumber - 2 >= 0))
+                    if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber - 2 >= 0)
                     {
                         if (TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 2].Occupied)
                         {
@@ -1365,7 +1372,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 2].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber + 2 < size && currentCell.Columnnumber + 2 >=0) && (currentCell.Rownumber - 1 < size && currentCell.Rownumber - 1 >= 0))
+                    if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber - 1 >= 0)
                     {
                         if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].Occupied)
                         {
@@ -1378,7 +1385,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber + 1 < size && currentCell.Columnnumber + 1 >=0) && (currentCell.Rownumber + 2 < size && currentCell.Rownumber + 2 >= 0))
+                    if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber + 2 < size)
                     {
                         if (TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 2].Occupied)
                         {
@@ -1391,8 +1398,9 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 2].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber - 1 >= 0 && currentCell.Columnnumber - 1 < size ) && (currentCell.Rownumber + 2 < size && currentCell.Rownumber + 2 >= 0))
+                    if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber + 2 < size)
                     {
+                        MessageBox.Show((currentCell.Columnnumber - 1) + " " + (currentCell.Rownumber + 2));
                         if (TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2].Occupied)
                         {
                             char[] c = TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2].OccupiedBy.ToCharArray();
@@ -1404,7 +1412,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber - 1 >= 0 && currentCell.Columnnumber - 1 < size) && (currentCell.Rownumber - 2 < size && currentCell.Rownumber - 2 >= 0))
+                    if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber - 2 >= 0)
                     {
                         if (TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 2].Occupied)
                         {
@@ -1666,26 +1674,7 @@ namespace Chess_Forms
                     MessageBox.Show("nu har nått gått väldigt fel!");
                     break;
             }
-            //for (int i = 0; i < size; i++)
-            //{
-            //    for (int j = 0; j < size; j++)
-            //    {
-            //        if (TheGrid[i, j].Occupied)
-            //        {
-            //            MessageBox.Show(i.ToString() + " " + j.ToString());
 
-            //        }
-            //        else
-            //        {
-            //            if (TheGrid[i, j].OccupiedBy == TheGrid[2,3].OccupiedBy)
-            //            {
-            //                MessageBox.Show(i.ToString() + " " + j.ToString());
-
-
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         private char GetChar(string occupiedBy)
