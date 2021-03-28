@@ -32,20 +32,6 @@ namespace Chess_Forms
             CreateButtons();
             //placerar ut pjäserna
             GeneratePieces();
-            placePiecesInStart(Myboard);
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    
-                    if (Myboard.TheGrid[j, i].Occupied)
-                    {
-                        //MessageBox.Show(j + " " + i + Myboard.TheGrid[j, i].OccupiedBy.name);
-                        
-                    }
-                }
-
-            }
 
         }
         //skapar och placerar ut alla spelpjäser
@@ -204,7 +190,6 @@ namespace Chess_Forms
                                     pieceGrid[i].Location = new Point(pieceSize * cell.Rownumber, pieceSize * cell.Columnnumber);
                                     pieceGrid[i].Image = Properties.Resources.VitPawn;
                                     pieceGrid[i].Tag = cell.OccupiedBy;
-                                    MessageBox.Show("tjo");
                                     if (i % 2 == 0)
                                     {
                                         pieceGrid[i].BackColor = Color.White;
@@ -246,32 +231,8 @@ namespace Chess_Forms
         private void MarkallowedTiles(object sender, EventArgs e)
         {
             RadioButton r = (RadioButton)sender;
-            
-            //RadioButton r1 = new RadioButton();
-            
-            //int y = r.Location.Y / 65;
-            //int a = r.Location.X / 65;
-            
-            
-            //if (buttonGrid[a, y].FlatAppearance.BorderSize == 4)
-            //{
-            //    for (int i = 0; i < 32; i++)
-            //    {
-            //        if (pieceGrid[i].Location == buttonGrid[a, y].Location)
-            //        {
-            //            r1 = pieceGrid[i];
-            //            string s1 = (string)r1.Tag;
-            //            string[] tag1 = s1.Split(' ');
-            //            string piece1 = tag1[0];
-            //            MovePiece(r1, buttonGrid[a, y], piece1);
-            //            panel1.Controls.Remove(r);
-            //        }
+            piece s = (piece)r.Tag;
 
-            //    }
-                
-            //}
-            //else
-            //{
                 for (int z = 0; z < Myboard.size; z++)
                 {
                     for (int j = 0; j < Myboard.size; j++)
@@ -281,7 +242,6 @@ namespace Chess_Forms
 
                     }
                 }
-                piece s = (piece)r.Tag;
                 MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
                 Myboard.SelectedPiece = s;
                 Myboard.Markallowedmove(s.currentCell, s);
@@ -299,7 +259,6 @@ namespace Chess_Forms
                         }
                     }
                 }
-           //}
         }
 
         private void CreateButtons()
@@ -374,12 +333,14 @@ namespace Chess_Forms
             int height = rb.Location.Y / 65;
             int newWidth = b.Location.X / 65;
             int newHeight = b.Location.Y / 65;
-            Spiece.currentCell = new cell(newHeight, newWidth);
             Myboard.TheGrid[width, height].Occupied = false;
             Myboard.TheGrid[width, height].OccupiedBy = null;
             Myboard.TheGrid[newWidth, newHeight].Occupied = true;
             Myboard.TheGrid[newWidth, newHeight].OccupiedBy = Spiece;
-            //MessageBox.Show("tjo");
+            //ändrar piecens cell
+            Spiece.currentCell = new cell(newHeight, newWidth);
+
+
             //change location of radiobutton
             rb.Location = b.Location;
             rb.Checked = false;
@@ -391,6 +352,7 @@ namespace Chess_Forms
             {
                 rb.BackColor = Color.Black;
             }
+            Myboard.SelectedPiece = null;
         }
 
         private void buttonOmstart_Click(object sender, EventArgs e)
@@ -1493,7 +1455,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber + 2 < size && currentCell.Columnnumber + 2 >= 0) && (currentCell.Rownumber - 1 >= 0 && currentCell.Rownumber - 1 < size))
+                    if ((currentCell.Columnnumber - 2 < size && currentCell.Columnnumber - 2 >= 0) && (currentCell.Rownumber - 1 >= 0 && currentCell.Rownumber - 1 < size))
                     {
                         if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].Occupied)
                         {
