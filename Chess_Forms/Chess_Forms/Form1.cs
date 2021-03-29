@@ -231,20 +231,58 @@ namespace Chess_Forms
         private void MarkallowedTiles(object sender, EventArgs e)
         {
             RadioButton r = (RadioButton)sender;
+<<<<<<< Updated upstream
             piece s = (piece)r.Tag;
 
                 for (int z = 0; z < Myboard.size; z++)
+=======
+
+            //RadioButton r1 = new RadioButton();
+
+            //int y = r.Location.Y / 65;
+            //int a = r.Location.X / 65;
+
+
+            //if (buttonGrid[a, y].FlatAppearance.BorderSize == 4)
+            //{
+            //    for (int i = 0; i < 32; i++)
+            //    {
+            //        if (pieceGrid[i].Location == buttonGrid[a, y].Location)
+            //        {
+            //            r1 = pieceGrid[i];
+            //            string s1 = (string)r1.Tag;
+            //            string[] tag1 = s1.Split(' ');
+            //            string piece1 = tag1[0];
+            //            MovePiece(r1, buttonGrid[a, y], piece1);
+            //            panel1.Controls.Remove(r);
+            //        }
+
+            //    }
+
+            //}
+            //else
+            //{
+            for (int z = 0; z < Myboard.size; z++)
+            {
+                for (int j = 0; j < Myboard.size; j++)
+>>>>>>> Stashed changes
                 {
-                    for (int j = 0; j < Myboard.size; j++)
-                    {
-                        buttonGrid[j, z].FlatAppearance.BorderSize = 0;
+                    buttonGrid[j, z].FlatAppearance.BorderSize = 0;
 
 
-                    }
                 }
+<<<<<<< Updated upstream
                 MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
                 Myboard.SelectedPiece = s;
                 Myboard.Markallowedmove(s.currentCell, s);
+=======
+            }
+            piece s = (piece)r.Tag;
+            MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
+            Myboard.SelectedPiece = s;
+            Myboard.Markallowedmove(s.currentCell, s);
+            MessageBox.Show(Myboard.TheGrid[6, 7].AllowedMove + " ute");
+>>>>>>> Stashed changes
                 for (int x = 0; x < Myboard.size; x++)
                 {
                     for (int j = 0; j < Myboard.size; j++)
@@ -253,7 +291,7 @@ namespace Chess_Forms
 
                         if (cell.AllowedMove)
                         {
-                            //MessageBox.Show(j.ToString() +"," +  x.ToString() + "y,x allowed");
+                            MessageBox.Show(j +"," +  x + "y,x allowed");
                             buttonGrid[j, x].FlatAppearance.BorderSize = 4;
                             buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
                         }
@@ -522,7 +560,6 @@ namespace Chess_Forms
                 }
             }
         }
-        
         public void Markallowedmove(cell currentCell, piece Selectedpiece)
         {
             for (int i = 0; i < size; i++)
@@ -545,76 +582,84 @@ namespace Chess_Forms
                     bool up = true;
                     bool down = true;
                     MessageBox.Show(currentCell.Columnnumber + " " + currentCell.Rownumber + " mark cell");
-                    for (int i = 1; i < size; i++)
-                    {
+                    //for (int i = 1; i < size; i++)
+                    //{
+                        if(currentCell.Columnnumber - 1 >= 0)
+                            Torn(1, TheGrid[currentCell.Columnnumber, currentCell.Rownumber], false, false, true);
+                        if (currentCell.Columnnumber + 1 <= 7)
+                            Torn(1, TheGrid[currentCell.Columnnumber, currentCell.Rownumber], false, true, true);
+                        if(currentCell.Rownumber - 1 >= 0)
+                            Torn(1, TheGrid[currentCell.Columnnumber, currentCell.Rownumber], true, false, true);
+                        if(currentCell.Rownumber + 1 <= 7)
+                            Torn(1, TheGrid[currentCell.Columnnumber, currentCell.Rownumber], true, true, true);
 
-                        if (currentCell.Columnnumber + i < size && up)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber + i) + " up");
+                        //if (currentCell.Columnnumber + i < size && up)
+                        //{
+                        //    //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber + i) + " up");
 
-                            if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-                                }
+                        //    if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].Occupied)
+                        //    {
+                        //        if (!Selectedpiece.IsWhite)
+                        //        {
+                        //            TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
+                        //        }
 
-                                up = false;
-                            }
-                            else
-                            {
-                                TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
+                        //        up = false;
+                        //    }
+                        //    else
+                        //    {
+                        //        TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
 
-                            }
-                        }
-                        if (currentCell.Columnnumber - i >= 0 && right)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber - i) + " right");
+                        //    }
+                        //}
+                        //if (currentCell.Columnnumber - i >= 0 && right)
+                        //{
+                        //    //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber - i) + " right");
 
-                            if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                                }
+                        //    if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].Occupied)
+                        //    {
+                        //        if (!Selectedpiece.IsWhite)
+                        //        {
+                        //            TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
+                        //        }
                                 
-                                    right = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber - i >= 0 && down)
-                        {
-                           // MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber - i) + " down");
+                        //            right = false;
+                        //    }
+                        //    else
+                        //        TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
+                        //}
+                        //if (currentCell.Rownumber - i >= 0 && down)
+                        //{
+                        //   // MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber - i) + " down");
 
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                                }
+                        //    if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].Occupied)
+                        //    {
+                        //        if (!Selectedpiece.IsWhite)
+                        //        {
+                        //            TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
+                        //        }
                                 
-                                    down = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber , currentCell.Rownumber - i].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber + i < size && left)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i) + " left");
+                        //            down = false;
+                        //    }
+                        //    else
+                        //        TheGrid[currentCell.Columnnumber , currentCell.Rownumber - i].AllowedMove = true;
+                        //}
+                        //if (currentCell.Rownumber + i < size && left)
+                        //{
+                        //    //MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i) + " left");
 
-                            if (TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].AllowedMove = true;
-                                }                                
-                                left = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                        }
-                    }
+                        //    if (TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].Occupied)
+                        //    {
+                        //        if (!Selectedpiece.IsWhite)
+                        //        {
+                        //            TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].AllowedMove = true;
+                        //        }                                
+                        //        left = false;
+                        //    }
+                        //    else
+                        //        TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
+                        //}
+                    //}
                     break;
                 case "STorn1":
                 case "STorn2":
@@ -1661,6 +1706,79 @@ namespace Chess_Forms
                     break;
             }
 
+        }
+
+        private void Torn(int i, cell cell, bool row, bool add, bool white)
+        {
+            if (!row && add)
+            {
+                if (TheGrid[cell.Columnnumber + i, cell.Rownumber].Occupied)
+                {
+                    if (!TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.IsWhite)
+                    {
+                        TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
+                    }
+
+                    return;
+                }
+                TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
+
+                if (i + 1 >= 7)
+                    Torn(i + 1, TheGrid[cell.Columnnumber, cell.Rownumber], false, false, true);
+            }
+            if(!row && !add)
+            {
+                if (TheGrid[cell.Columnnumber - i, cell.Rownumber].Occupied)
+                {
+                    if (!TheGrid[cell.Columnnumber - i, cell.Rownumber].OccupiedBy.IsWhite)
+                    {
+                        TheGrid[cell.Columnnumber - i, cell.Rownumber].AllowedMove = true;
+                    }
+                    MessageBox.Show(cell.Columnnumber - i + " ");
+                    return;
+                }
+                MessageBox.Show(cell.Columnnumber - i + " ");
+
+                TheGrid[cell.Columnnumber - i, cell.Rownumber].AllowedMove = true;
+                MessageBox.Show(TheGrid[cell.Columnnumber - i, cell.Rownumber].AllowedMove + " test");
+
+                if (i - 1 <= 0)
+                    Torn(i - 1, TheGrid[cell.Columnnumber, cell.Rownumber], false, true, true);
+            }
+            if (row && add)
+            {
+
+                if (TheGrid[cell.Columnnumber, cell.Rownumber + i].Occupied)
+                {
+                    if (!TheGrid[cell.Columnnumber, cell.Rownumber + i].OccupiedBy.IsWhite)
+                    {
+                        TheGrid[cell.Columnnumber, cell.Rownumber + i].AllowedMove = true;
+                    }
+                    return;
+
+                }
+                TheGrid[cell.Columnnumber, cell.Rownumber + i].AllowedMove = true;
+
+                if (i + 1 <= 7)
+                    Torn(i + 1, TheGrid[cell.Columnnumber, cell.Rownumber], true, false, true);
+            }
+            if (row && !add)
+            {
+
+                if (TheGrid[cell.Columnnumber, cell.Rownumber - i].Occupied)
+                {
+                    if (!TheGrid[cell.Columnnumber, cell.Rownumber - i].OccupiedBy.IsWhite)
+                    {
+                        TheGrid[cell.Columnnumber, cell.Rownumber - i].AllowedMove = true;
+                    }
+
+                    return;
+                }
+                TheGrid[cell.Columnnumber, cell.Rownumber - i].AllowedMove = true;
+
+                if (i - 1 <= 0)
+                    Torn(i - 1, TheGrid[cell.Columnnumber, cell.Rownumber], true, true, true);
+            }
         }
     }
     public class cell
