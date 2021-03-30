@@ -230,6 +230,7 @@ namespace Chess_Forms
         //markerar de ställen som pjäsen får gå
         private void MarkallowedTiles(object sender, EventArgs e)
         {
+            Unmarkallowed();
             RadioButton r = (RadioButton)sender;
 
             piece s = (piece)r.Tag;
@@ -286,6 +287,17 @@ namespace Chess_Forms
             }
         }
 
+        private void Unmarkallowed()
+        {
+            for (int z = 0; z < Myboard.size; z++)
+            {
+                for (int j = 0; j < Myboard.size; j++)
+                {
+                    buttonGrid[j, z].FlatAppearance.BorderSize = 0;
+                }
+            }
+        }
+
         private void CreateButtons()
         {
             int buttonSize = panel1.Width / Myboard.size;
@@ -332,13 +344,7 @@ namespace Chess_Forms
                         if (b.FlatAppearance.BorderSize == 4)
                         {
                             MovePiece(rb, b, p);
-                            for (int z = 0; z < Myboard.size; z++)
-                            {
-                                for (int j = 0; j < Myboard.size; j++)
-                                {
-                                    buttonGrid[j, z].FlatAppearance.BorderSize = 0;
-                                }
-                            }
+                            Unmarkallowed();
                         }
                     }
                 }
@@ -389,121 +395,90 @@ namespace Chess_Forms
         private void PlaceBlackpieces(board myboard)
         {
             piece SBonde1 = new piece("SBonde1", new cell(0, 1), myboard);
-            myboard.TheGrid[0, 1].OccupiedBy = SBonde1;
             SBonde1.IsWhite = false;
 
             piece SBonde2 = new piece("SBonde2", new cell(1, 1), myboard);
-            myboard.TheGrid[1, 1].OccupiedBy = SBonde2;
             SBonde2.IsWhite = false;
 
             piece SBonde3 = new piece("SBonde3", new cell(2, 1), myboard);
-            myboard.TheGrid[2, 1].OccupiedBy = SBonde3;
             SBonde3.IsWhite = false;
 
             piece SBonde4 = new piece("SBonde4", new cell(3, 1), myboard);
-            myboard.TheGrid[3, 1].OccupiedBy = SBonde4;
             SBonde4.IsWhite = false;
 
             piece SBonde5 = new piece("SBonde5", new cell(4, 1), myboard);
-            myboard.TheGrid[4, 1].OccupiedBy = SBonde5;
             SBonde5.IsWhite = false;
 
             piece SBonde6 = new piece("SBonde6", new cell(5, 1), myboard);
-            myboard.TheGrid[5, 1].OccupiedBy = SBonde6;
             SBonde6.IsWhite = false;
 
             piece SBonde7 = new piece("SBonde7", new cell(6, 1), myboard);
-            myboard.TheGrid[6, 1].OccupiedBy = SBonde7;
             SBonde7.IsWhite = false;
 
             piece SBonde8 = new piece("SBonde8", new cell(7, 1), myboard);
-            myboard.TheGrid[7, 1].OccupiedBy = SBonde8;
             SBonde8.IsWhite = false;
 
             piece STorn1 = new piece("STorn1", new cell(0, 0), myboard);
-            myboard.TheGrid[0, 0].OccupiedBy = STorn1;
             STorn1.IsWhite = false;
 
             piece STorn2 = new piece("STorn2", new cell(7, 0), myboard);
-            myboard.TheGrid[7, 0].OccupiedBy = STorn2;
             STorn2.IsWhite = false;
 
             piece SHäst1 = new piece("SHäst1", new cell(1, 0), myboard);
-            myboard.TheGrid[1, 0].OccupiedBy = SHäst1;
             SHäst1.IsWhite = false;
 
             piece SHäst2 = new piece("SHäst2", new cell(6, 0), myboard);
-            myboard.TheGrid[6, 0].OccupiedBy = SHäst2;
             SHäst2.IsWhite = false;
 
             piece SLöpare1 = new piece("SLöpare1", new cell(2, 0), myboard);
-            myboard.TheGrid[2, 0].OccupiedBy = SLöpare1;
             SLöpare1.IsWhite = false;
 
             piece SLöpare2 = new piece("SLöpare2", new cell(5, 0), myboard);
-            myboard.TheGrid[5, 0].OccupiedBy = SLöpare2;
             SLöpare2.IsWhite = false;
 
             piece SKung = new piece("SKung", new cell(3, 0), myboard);
-            myboard.TheGrid[3, 0].OccupiedBy = SKung;
             SKung.IsWhite = false;
 
             piece SDrottning = new piece("SDrottning", new cell(4, 0), myboard);
-            myboard.TheGrid[4, 0].OccupiedBy = SDrottning;
             SDrottning.IsWhite = false;
         }
 
         private void PlaceWhitepieces(board myboard)
         {
             piece VBonde1 = new piece("VBonde1", new cell(0, 6), myboard);
-            myboard.TheGrid[0, 6].OccupiedBy = VBonde1;
-
             piece VBonde2 = new piece("VBonde2", new cell(1, 6), myboard);
-            myboard.TheGrid[1, 6].OccupiedBy = VBonde2;
-
             piece VBonde3 = new piece("VBonde3", new cell(2, 6), myboard);
-            myboard.TheGrid[2, 6].OccupiedBy = VBonde3;
-
             piece VBonde4 = new piece("VBonde4", new cell(3, 6), myboard);
-            myboard.TheGrid[3, 6].OccupiedBy = VBonde4;
-
             piece VBonde5 = new piece("VBonde5", new cell(4, 6), myboard);
-            myboard.TheGrid[4, 6].OccupiedBy = VBonde5;
-
             piece VBonde6 = new piece("VBonde6", new cell(5, 6), myboard);
-            myboard.TheGrid[5, 6].OccupiedBy = VBonde6;
-
             piece VBonde7 = new piece("VBonde7", new cell(6, 6), myboard);
-            myboard.TheGrid[6, 6].OccupiedBy = VBonde7;
-
             piece VBonde8 = new piece("VBonde8", new cell(7, 6), myboard);
-            myboard.TheGrid[7, 6].OccupiedBy = VBonde8;
-
             piece VTorn1 = new piece("VTorn1", new cell(0, 7), myboard);
-            myboard.TheGrid[0, 7].OccupiedBy = VTorn1;
-
             piece VTorn2 = new piece("VTorn2", new cell(7, 7), myboard);
-            myboard.TheGrid[7, 7].OccupiedBy = VTorn2;
-
             piece VHäst1 = new piece("VHäst1", new cell(1, 7), myboard);
-            myboard.TheGrid[1, 7].OccupiedBy = VHäst1;
-
             piece VHäst2 = new piece("VHäst2", new cell(6, 7), myboard);
-            myboard.TheGrid[6, 7].OccupiedBy = VHäst2;
-
             piece VLöpare1 = new piece("VLöpare1", new cell(2, 7), myboard);
-            myboard.TheGrid[2, 7].OccupiedBy = VLöpare1;
-
             piece VLöpare2 = new piece("VLöpare2", new cell(5, 7), myboard);
-            myboard.TheGrid[5, 7].OccupiedBy = VLöpare2;
-
             piece VKung = new piece("VKung", new cell(4, 7), myboard);
-            myboard.TheGrid[4, 7].OccupiedBy = VKung;
-
             piece VDrottning = new piece("VDrottning", new cell(3, 7), myboard);
-            myboard.TheGrid[3, 7].OccupiedBy = VDrottning;
 
+        }
 
+        private void buttonTabort_Click(object sender, EventArgs e)
+        {
+            piece c = Myboard.SelectedPiece;
+
+            for (int i = 0; i < pieceGrid.Length; i++)
+            {
+                if (pieceGrid[i].Tag == c)
+                {
+                    panel1.Controls.Remove(pieceGrid[i]);
+                    Myboard.TheGrid[c.currentCell.Columnnumber, c.currentCell.Rownumber].Occupied = false;
+                    Myboard.TheGrid[c.currentCell.Columnnumber, c.currentCell.Rownumber].OccupiedBy = null;
+                    Unmarkallowed();
+                }
+            }
+            
         }
     }
     public class piece
@@ -518,6 +493,8 @@ namespace Chess_Forms
             currentCell = _currentCell;
             currentCell.Occupied = true;
             Myboard.TheGrid[currentCell.Columnnumber, currentCell.Rownumber].Occupied = true;
+            Myboard.TheGrid[currentCell.Columnnumber, currentCell.Rownumber].OccupiedBy = this;
+
             IsWhite = true;
         }
     }
@@ -541,6 +518,7 @@ namespace Chess_Forms
                 }
             }
         }
+
         public void Markallowedmove(cell currentCell, piece Selectedpiece)
         {
             for (int i = 0; i < size; i++)
@@ -1382,32 +1360,33 @@ namespace Chess_Forms
                     break;
             }
 
-            void Torn(cell cell, bool v)
-            {
-                bool cplus = true;
-                bool cmin = true;
-                bool rplus = true;
-                bool rmin = true;
-                for (int i = 1; i < 8; i++)
-                {
-                    if (cell.Columnnumber + i < 8 && cplus)
-                    {
-                        cplus = CplusTorn(cell, i, v);
-                    }
-
-                    if (cell.Columnnumber - i >= 0 && cmin)
-                        cmin = CminTorn(cell, i, v);
-
-                    if (cell.Rownumber + i < 8 && rplus)
-                        rplus = RplusTorn(cell, i, v);
-
-                    if (cell.Rownumber - i >= 0 && rmin)
-                        rmin = RminTorn(cell, i, v);
-
-                }
-            }
             
         }
+        void Torn(cell cell, bool v)
+        {
+            bool cplus = true;
+            bool cmin = true;
+            bool rplus = true;
+            bool rmin = true;
+            for (int i = 1; i < 8; i++)
+            {
+                if (cell.Columnnumber + i < 8 && cplus)
+                {
+                    cplus = CplusTorn(cell, i, v);
+                }
+
+                if (cell.Columnnumber - i > -1 && cmin)
+                    cmin = CminTorn(cell, i, v);
+
+                if (cell.Rownumber + i < 8 && rplus)
+                    rplus = RplusTorn(cell, i, v);
+
+                if (cell.Rownumber - i > -1 && rmin)
+                    rmin = RminTorn(cell, i, v);
+
+            }
+        }
+
         #region tornmetoder
         private bool RminTorn(cell cell, int i, bool v)
         {
@@ -1480,6 +1459,7 @@ namespace Chess_Forms
         public int Rownumber { get; set; }
         public int Columnnumber { get; set; }
         public bool Occupied { get; set; }
+        public bool OccupiedByWhite { get; set; }
         public piece OccupiedBy { get; set; }
 
         public bool AllowedMove { get; set; }

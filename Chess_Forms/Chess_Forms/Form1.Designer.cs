@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonOmstart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.buttonTabort = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -247,17 +249,31 @@
             this.label16.TabIndex = 14;
             this.label16.Text = "5";
             // 
+            // buttonTabort
+            // 
+            this.buttonTabort.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonTabort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTabort.Location = new System.Drawing.Point(583, 99);
+            this.buttonTabort.Name = "buttonTabort";
+            this.buttonTabort.Size = new System.Drawing.Size(75, 23);
+            this.buttonTabort.TabIndex = 11;
+            this.buttonTabort.Text = "Ta bort pjäs";
+            this.buttonTabort.UseVisualStyleBackColor = true;
+            this.buttonTabort.Click += new System.EventHandler(this.buttonTabort_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 668);
+            this.Controls.Add(this.buttonTabort);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buttonOmstart);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Schack";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -289,6 +305,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonTabort;
     }
 }
 
