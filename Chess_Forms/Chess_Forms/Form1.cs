@@ -37,11 +37,11 @@ namespace Chess_Forms
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    
+
                     if (Myboard.TheGrid[j, i].Occupied)
                     {
                         //MessageBox.Show(j + " " + i + Myboard.TheGrid[j, i].OccupiedBy.name);
-                        
+
                     }
                 }
 
@@ -64,7 +64,7 @@ namespace Chess_Forms
             {
                 for (int j = 0; j < Myboard.size; j++)
                 {
-                    
+
                     // skapar en cell för varje ruta
                     cell cell = Myboard.TheGrid[j, z];
                     if (cell.Occupied)
@@ -82,7 +82,7 @@ namespace Chess_Forms
                         string s = cell.OccupiedBy.name;
 
 
-                       
+
                         switch (cell.OccupiedBy.name)
                         {
                             //vita pjäser
@@ -204,7 +204,6 @@ namespace Chess_Forms
                                     pieceGrid[i].Location = new Point(pieceSize * cell.Rownumber, pieceSize * cell.Columnnumber);
                                     pieceGrid[i].Image = Properties.Resources.VitPawn;
                                     pieceGrid[i].Tag = cell.OccupiedBy;
-                                    MessageBox.Show("tjo");
                                     if (i % 2 == 0)
                                     {
                                         pieceGrid[i].BackColor = Color.White;
@@ -235,7 +234,7 @@ namespace Chess_Forms
                                 break;
                         }
                     }
-                    
+
                 }
             }
 
@@ -246,65 +245,40 @@ namespace Chess_Forms
         private void MarkallowedTiles(object sender, EventArgs e)
         {
             RadioButton r = (RadioButton)sender;
-            
-            //RadioButton r1 = new RadioButton();
-            
-            //int y = r.Location.Y / 65;
-            //int a = r.Location.X / 65;
-            
-            
-            //if (buttonGrid[a, y].FlatAppearance.BorderSize == 4)
-            //{
-            //    for (int i = 0; i < 32; i++)
-            //    {
-            //        if (pieceGrid[i].Location == buttonGrid[a, y].Location)
-            //        {
-            //            r1 = pieceGrid[i];
-            //            string s1 = (string)r1.Tag;
-            //            string[] tag1 = s1.Split(' ');
-            //            string piece1 = tag1[0];
-            //            MovePiece(r1, buttonGrid[a, y], piece1);
-            //            panel1.Controls.Remove(r);
-            //        }
 
-            //    }
-                
-            //}
-            //else
-            //{
-                for (int z = 0; z < Myboard.size; z++)
+
+            for (int z = 0; z < Myboard.size; z++)
+            {
+                for (int j = 0; j < Myboard.size; j++)
                 {
-                    for (int j = 0; j < Myboard.size; j++)
-                    {
-                        buttonGrid[j, z].FlatAppearance.BorderSize = 0;
+                    buttonGrid[j, z].FlatAppearance.BorderSize = 0;
 
 
-                    }
                 }
-<<<<<<< HEAD
-                piece s = (piece)r.Tag;
-                MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
-                Myboard.SelectedPiece = s;
-                Myboard.Markallowedmove(s.currentCell, s);
-                for (int x = 0; x < Myboard.size; x++)
-                {
-                    for (int j = 0; j < Myboard.size; j++)
-                    {
-                        cell cell = Myboard.TheGrid[j, x];
-
-                        if (cell.AllowedMove)
-                        {
-                            //MessageBox.Show(j.ToString() +"," +  x.ToString() + "y,x allowed");
-                            buttonGrid[j, x].FlatAppearance.BorderSize = 4;
-                            buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
-                        }
-                    }
-                }
-           //}
-=======
             }
->>>>>>> parent of 7ccf448 (fixade piece class och la till ta bort knapp)
+
+            piece s = (piece)r.Tag;
+            MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
+            Myboard.SelectedPiece = s;
+            Myboard.Markallowedmove(s.currentCell, s);
+            for (int x = 0; x < Myboard.size; x++)
+            {
+                for (int j = 0; j < Myboard.size; j++)
+                {
+                    cell cell = Myboard.TheGrid[j, x];
+
+                    if (cell.AllowedMove)
+                    {
+                        //MessageBox.Show(j.ToString() +"," +  x.ToString() + "y,x allowed");
+                        buttonGrid[j, x].FlatAppearance.BorderSize = 4;
+                        buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
+                    }
+                }
+            }
+
         }
+
+
 
         private void CreateButtons()
         {
@@ -316,7 +290,7 @@ namespace Chess_Forms
                 //label[i].Text = "va fan e det som händer";
                 //label[i].Location = label1.Location;
                 //label[i].BringToFront();
-                
+
 
                 for (int j = 0; j < Myboard.size; j++)
                 {
@@ -328,13 +302,13 @@ namespace Chess_Forms
 
                     panel1.Controls.Add(buttonGrid[j, i]);
                     buttonGrid[j, i].Location = new Point(i * buttonGrid[j, i].Height, buttonGrid[j, i].Width * j);
-                    if (((j+ i) % 2) == 0) 
+                    if (((j + i) % 2) == 0)
                     {
                         buttonGrid[j, i].BackColor = Color.White;
                     }
                     else
                         buttonGrid[j, i].BackColor = Color.Black;
-                    buttonGrid[j, i].Tag = i +"," + j;
+                    buttonGrid[j, i].Tag = i + "," + j;
                     buttonGrid[j, i].FlatStyle = FlatStyle.Flat;
                     buttonGrid[j, i].FlatAppearance.BorderSize = 0;
                 }
@@ -352,7 +326,7 @@ namespace Chess_Forms
                 piece p = Myboard.SelectedPiece;
                 for (int i = 0; i < pieceGrid.Length; i++)
                 {
-                    if(p == pieceGrid[i].Tag)
+                    if (p == pieceGrid[i].Tag)
                     {
                         RadioButton rb = pieceGrid[i];
                         if (b.FlatAppearance.BorderSize == 4)
@@ -379,15 +353,17 @@ namespace Chess_Forms
             int newWidth = b.Location.X / 65;
             int newHeight = b.Location.Y / 65;
             Spiece.currentCell = new cell(newHeight, newWidth);
+
+            MessageBox.Show(width + " " + height);
             Myboard.TheGrid[width, height].Occupied = false;
             Myboard.TheGrid[width, height].OccupiedBy = null;
             Myboard.TheGrid[newWidth, newHeight].Occupied = true;
             Myboard.TheGrid[newWidth, newHeight].OccupiedBy = Spiece;
-            //MessageBox.Show("tjo");
+            MessageBox.Show(Myboard.TheGrid[newWidth, newHeight].Occupied + " ");
             //change location of radiobutton
             rb.Location = b.Location;
             rb.Checked = false;
-            if(((rb.Location.X/65) + (rb.Location.Y/65)) % 2 == 0)
+            if (((rb.Location.X / 65) + (rb.Location.Y / 65)) % 2 == 0)
             {
                 rb.BackColor = Color.White;
             }
@@ -564,10 +540,7 @@ namespace Chess_Forms
                 }
             }
         }
-<<<<<<< HEAD
-        
-=======
->>>>>>> parent of 7ccf448 (fixade piece class och la till ta bort knapp)
+
         public void Markallowedmove(cell currentCell, piece Selectedpiece)
         {
             for (int i = 0; i < size; i++)
@@ -577,168 +550,21 @@ namespace Chess_Forms
                     TheGrid[i, j].AllowedMove = false;
                 }
             }
-            
+
             switch (Selectedpiece.name)
             {
                 case "VTorn1":
                 case "VTorn2":
                     //kan gå vertikalt och horisontellt
 
-                    //bools som säger ifall den kan gå åt respektive håll
-                    bool right = true;
-                    bool left = true;
-                    bool up = true;
-                    bool down = true;
-                    MessageBox.Show(currentCell.Columnnumber + " " + currentCell.Rownumber + " mark cell");
-                    for (int i = 1; i < size; i++)
-                    {
 
-                        if (currentCell.Columnnumber + i < size && up)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber + i) + " up");
+                    Torn(currentCell, false);
 
-                            if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                up = false;
-                            }
-                            else
-                            {
-                                TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-
-                            }
-                        }
-                        if (currentCell.Columnnumber - i >= 0 && right)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber - i) + " right");
-
-                            if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                                }
-                                
-                                    right = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber - i >= 0 && down)
-                        {
-                           // MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber - i) + " down");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                                }
-                                
-                                    down = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber , currentCell.Rownumber - i].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber + i < size && left)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i) + " left");
-
-                            if (TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber , currentCell.Rownumber + i].AllowedMove = true;
-                                }                                
-                                left = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                        }
-                    }
-                    
                     break;
                 case "STorn1":
                 case "STorn2":
                     //kan gå vertikalt och horisontellt
-                    //bools som säger ifall den kan gå åt respektive håll
-                    right = true;
-                    left = true;
-                    up = true;
-                    down = true;
-                    for (int i = 1; i < size; i++)
-                    {
-                        if (currentCell.Columnnumber + i < size && up)
-                        {
-                            MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber + i) + " up");
-
-                            if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                up = false;
-                            }
-                            else
-                            {
-                                TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-
-                            }
-                        }
-                        if (currentCell.Columnnumber - i >= 0 && right)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber - i) + " right");
-
-                            if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                right = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber - i >= 0 && down)
-                        {
-                            // MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber - i) + " down");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                                }
-
-                                down = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber + i < size && left)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i) + " left");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                                }
-                                left = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                        }
-                    }
+                    Torn(currentCell, true);
                     break;
                 case "VLöpare1":
                 case "VLöpare2":
@@ -749,7 +575,7 @@ namespace Chess_Forms
                     bool bot_left = true;
                     for (int i = 1; i < size; i++)
                     {
-                        if ((currentCell.Columnnumber + i < size && currentCell.Columnnumber + i >=0) && (currentCell.Rownumber + i < size && currentCell.Rownumber + i >=0) && bot_right)
+                        if ((currentCell.Columnnumber + i < size && currentCell.Columnnumber + i >= 0) && (currentCell.Rownumber + i < size && currentCell.Rownumber + i >= 0) && bot_right)
                         {
                             if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber + i].Occupied)
                             {
@@ -763,7 +589,7 @@ namespace Chess_Forms
                             else
                                 TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber + i].AllowedMove = true;
                         }
-                        if (currentCell.Columnnumber + i < size  && currentCell.Rownumber - i >= 0  && bot_left)
+                        if (currentCell.Columnnumber + i < size && currentCell.Rownumber - i >= 0 && bot_left)
                         {
                             if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber - i].Occupied)
                             {
@@ -780,7 +606,7 @@ namespace Chess_Forms
                             }
 
                         }
-                        if ((currentCell.Columnnumber - i >= 0 && currentCell.Columnnumber - i < size) && (currentCell.Rownumber - i >= 0 && currentCell.Rownumber - i< size) && top_left)
+                        if ((currentCell.Columnnumber - i >= 0 && currentCell.Columnnumber - i < size) && (currentCell.Rownumber - i >= 0 && currentCell.Rownumber - i < size) && top_left)
                         {
 
                             if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber - i].Occupied)
@@ -885,7 +711,7 @@ namespace Chess_Forms
                     break;
                 case "VKung":
                     // kan gå ett steg åt alla håll
-                    if (currentCell.Columnnumber + 1 < size) 
+                    if (currentCell.Columnnumber + 1 < size)
                     {
                         if (TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber].Occupied)
                         {
@@ -909,7 +735,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber].AllowedMove = true;
                     }
-                    if ((currentCell.Columnnumber - 1 >= 0 && currentCell.Columnnumber - 1 < size) && (currentCell.Rownumber + 1 < size && currentCell.Rownumber + 1 >=0))
+                    if ((currentCell.Columnnumber - 1 >= 0 && currentCell.Columnnumber - 1 < size) && (currentCell.Rownumber + 1 < size && currentCell.Rownumber + 1 >= 0))
                     {
                         if (TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 1].Occupied)
                         {
@@ -963,7 +789,7 @@ namespace Chess_Forms
                         {
                             if (!Selectedpiece.IsWhite)
                             {
-                                TheGrid[currentCell.Columnnumber , currentCell.Rownumber + 1].AllowedMove = true;
+                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber + 1].AllowedMove = true;
                             }
                         }
                         else
@@ -971,7 +797,7 @@ namespace Chess_Forms
                     }
                     if (currentCell.Rownumber - 1 >= 0 && currentCell.Rownumber - 1 < size)
                     {
-                        if (TheGrid[currentCell.Columnnumber , currentCell.Rownumber - 1].Occupied)
+                        if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - 1].Occupied)
                         {
                             if (!Selectedpiece.IsWhite)
                             {
@@ -1022,7 +848,7 @@ namespace Chess_Forms
                     }
                     if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber - 1 >= 0)
                     {
- 
+
                         if (TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 1].Occupied)
                         {
                             if (Selectedpiece.IsWhite)
@@ -1033,7 +859,7 @@ namespace Chess_Forms
                         else
                             TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 1].AllowedMove = true;
                     }
-                    if ( currentCell.Columnnumber + 1 < size && currentCell.Rownumber + 1 < size)
+                    if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber + 1 < size)
                     {
                         if (TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 1].Occupied)
                         {
@@ -1150,82 +976,8 @@ namespace Chess_Forms
                     }
 
                     //vertikal o horisontelt / torn
-                    //bools som säger ifall den kan gå åt respektive håll
-                    right = true;
-                    left = true;
-                    up = true;
-                    down = true;
-                    for (int i = 1; i < size; i++)
-                    {
-                        if (currentCell.Columnnumber + i < size && up)
-                        {
-                            MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber + i) + " up");
 
-                            if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].Occupied)
-                            {
-
-
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                up = false;
-                            }
-                            else
-                            {
-                                TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-
-                            }
-                        }
-                        if (currentCell.Columnnumber - i >= 0 && right)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber - i) + " right");
-
-                            if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                right = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber - i >= 0 && down)
-                        {
-                            // MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber - i) + " down");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                                }
-
-                                down = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber + i < size && left)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i) + " left");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].Occupied)
-                            {
-                                if (Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                                }
-                                left = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                        }
-                    }
+                    Torn(currentCell, true);
                     break;
                 case "VDrottning":
                     //diagonal / löpare
@@ -1293,87 +1045,15 @@ namespace Chess_Forms
                                 TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber + i].AllowedMove = true;
                         }
                     }
-                    
+
                     //vertikal o horisontelt / torn
-                    //bools som säger ifall den kan gå åt respektive håll
-                    right = true;
-                    left = true;
-                    up = true;
-                    down = true;
-                    for (int i = 1; i < size; i++)
-                    {
-                        if (currentCell.Columnnumber + i < size && up)
-                        {
-                            MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber + i) + " up");
+                    Torn(currentCell, false);
 
-                            if (TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                up = false;
-                            }
-                            else
-                            {
-                                TheGrid[currentCell.Columnnumber + i, currentCell.Rownumber].AllowedMove = true;
-
-                            }
-                        }
-                        if (currentCell.Columnnumber - i >= 0 && right)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber + i) + " " + (currentCell.Rownumber - i) + " right");
-
-                            if (TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                                }
-
-                                right = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber - i, currentCell.Rownumber].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber - i >= 0 && down)
-                        {
-                            // MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber - i) + " down");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                                }
-
-                                down = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber - i].AllowedMove = true;
-                        }
-                        if (currentCell.Rownumber + i < size && left)
-                        {
-                            //MessageBox.Show((currentCell.Columnnumber - i) + " " + (currentCell.Rownumber + i) + " left");
-
-                            if (TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].Occupied)
-                            {
-                                if (!Selectedpiece.IsWhite)
-                                {
-                                    TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                                }
-                                left = false;
-                            }
-                            else
-                                TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
-                        }
-                    }
                     break;
                 case "VHäst1":
                 case "VHäst2":
                     //hästen kan gå två steg fram och ett åt sidan
-                    if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber + 1 < size )
+                    if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber + 1 < size)
                     {
                         MessageBox.Show(currentCell.Columnnumber + " " + currentCell.Rownumber + " col + row + häst");
                         if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1].Occupied)
@@ -1707,12 +1387,11 @@ namespace Chess_Forms
                     break;
             }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         }
-=======
-            
-        }
+
+
+
         void Torn(cell cell, bool v)
         {
             bool cplus = true;
@@ -1720,38 +1399,28 @@ namespace Chess_Forms
             bool rplus = true;
             bool rmin = true;
             for (int i = 1; i < 8; i++)
-=======
-            void Torn(cell cell, bool v)
->>>>>>> parent of 7ccf448 (fixade piece class och la till ta bort knapp)
             {
-                bool cplus = true;
-                bool cmin = true;
-                bool rplus = true;
-                bool rmin = true;
-                for (int i = 1; i < 8; i++)
+
+                if (cell.Columnnumber + i < 8 && cplus)
                 {
-                    if (cell.Columnnumber + i < 8 && cplus)
-                    {
-                        cplus = CplusTorn(cell, i, v);
-                    }
-
-                    if (cell.Columnnumber - i >= 0 && cmin)
-                        cmin = CminTorn(cell, i, v);
-
-                    if (cell.Rownumber + i < 8 && rplus)
-                        rplus = RplusTorn(cell, i, v);
-
-                    if (cell.Rownumber - i >= 0 && rmin)
-                        rmin = RminTorn(cell, i, v);
-
+                    cplus = CplusTorn(cell, i, v);
                 }
+
+                if (cell.Columnnumber - i >= 0 && cmin)
+                    cmin = CminTorn(cell, i, v);
+
+                if (cell.Rownumber + i < 8 && rplus)
+                    rplus = RplusTorn(cell, i, v);
+
+                if (cell.Rownumber - i >= 0 && rmin)
+                    rmin = RminTorn(cell, i, v);
             }
-            
+
         }
         #region tornmetoder
         private bool RminTorn(cell cell, int i, bool v)
         {
-
+            MessageBox.Show(cell.Rownumber - i + " r-");
             if (TheGrid[cell.Columnnumber, cell.Rownumber - i].Occupied)
             {
                 MessageBox.Show("row -" + i + " " + TheGrid[cell.Columnnumber, cell.Rownumber - i].OccupiedBy.name);
@@ -1796,7 +1465,7 @@ namespace Chess_Forms
 
                 //}
                 #endregion
-                MessageBox.Show("col + "+ i + " " + TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.name);
+                MessageBox.Show("col + " + i + " " + TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.name);
                 return false;
             }
             TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
@@ -1813,8 +1482,6 @@ namespace Chess_Forms
             return true;
         }
         #endregion
-
->>>>>>> parent of a7e5c77 (skapade några allmäna metoder i board)
     }
     public class cell
     {
