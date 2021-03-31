@@ -653,6 +653,14 @@ namespace Chess_Forms
                                 TheGrid[currentCell.Columnnumber, currentCell.Rownumber + i].AllowedMove = true;
                         }
                     }
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int j = 0; j < 8; j++)
+                        {
+                            if (TheGrid[i, j].AllowedMove)
+                                MessageBox.Show(i + " " + j);
+                        }
+                    }
                     break;
                 case "STorn1":
                 case "STorn2":
