@@ -1700,7 +1700,103 @@ namespace Chess_Forms
                     break;
             }
 
+<<<<<<< HEAD
         }
+=======
+            
+        }
+        void Torn(cell cell, bool v)
+        {
+            bool cplus = true;
+            bool cmin = true;
+            bool rplus = true;
+            bool rmin = true;
+            for (int i = 1; i < 8; i++)
+            {
+                if (cell.Columnnumber + i < 8 && cplus)
+                {
+                    cplus = CplusTorn(cell, i, v);
+                }
+
+                if (cell.Columnnumber - i > -1 && cmin)
+                    cmin = CminTorn(cell, i, v);
+
+                if (cell.Rownumber + i < 8 && rplus)
+                    rplus = RplusTorn(cell, i, v);
+
+                if (cell.Rownumber - i > -1 && rmin)
+                    rmin = RminTorn(cell, i, v);
+
+            }
+        }
+
+        #region tornmetoder
+        private bool RminTorn(cell cell, int i, bool v)
+        {
+
+            if (TheGrid[cell.Columnnumber, cell.Rownumber - i].Occupied)
+            {
+                MessageBox.Show("row -" + i + " " + TheGrid[cell.Columnnumber, cell.Rownumber - i].OccupiedBy.name);
+                return false;
+            }
+            TheGrid[cell.Columnnumber, cell.Rownumber - i].AllowedMove = true;
+            return true;
+        }
+
+        private bool RplusTorn(cell cell, int i, bool v)
+        {
+            if (TheGrid[cell.Columnnumber, cell.Rownumber + i].Occupied)
+            {
+                MessageBox.Show("row +" + i + " " + TheGrid[cell.Columnnumber, cell.Rownumber + i].OccupiedBy.name);
+
+                return false;
+            }
+            TheGrid[cell.Columnnumber, cell.Rownumber + i].AllowedMove = true;
+            return true;
+        }
+
+        private bool CplusTorn(cell cell, int i, bool v)
+        {
+            if (TheGrid[cell.Columnnumber + i, cell.Rownumber].Occupied)
+            {
+                #region ta pjäs
+                //string s = TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.name;
+                //if (v)
+                //{
+                //    if(s.StartsWith("S"))
+                //    {
+                //        TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
+                //    }
+
+                //}
+                //if(!v)
+                //{
+                //    if (s.StartsWith("V"))
+                //    {
+                //        TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
+                //    }
+
+                //}
+                #endregion
+                MessageBox.Show("col + "+ i + " " + TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.name);
+                return false;
+            }
+            TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
+            return true;
+        }
+        private bool CminTorn(cell cell, int i, bool v)
+        {
+            if (TheGrid[cell.Columnnumber - i, cell.Rownumber].Occupied)
+            {
+                MessageBox.Show("col -" + i + " " + TheGrid[cell.Columnnumber - i, cell.Rownumber].OccupiedBy.name);
+                return false;
+            }
+            TheGrid[cell.Columnnumber - i, cell.Rownumber].AllowedMove = true;
+            return true;
+        }
+        #endregion
+
+>>>>>>> parent of a7e5c77 (skapade några allmäna metoder i board)
     }
     public class cell
     {
