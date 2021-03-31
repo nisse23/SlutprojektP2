@@ -1388,71 +1388,78 @@ namespace Chess_Forms
         }
 
         #region tornmetoder
+        public bool Occupied(cell c)
+        {
+            if (TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                return true;
+            return false;
+        }
         private bool RminTorn(cell cell, int i, bool v)
         {
-
-            if (TheGrid[cell.Columnnumber, cell.Rownumber - i].Occupied)
-            {
-                MessageBox.Show("row -" + i + " " + TheGrid[cell.Columnnumber, cell.Rownumber - i].OccupiedBy.name);
+            cell nycell = left(cell);
+            if (Occupied(nycell))
+            { 
+                MessageBox.Show("row -" + i + " " + TheGrid[nycell.Columnnumber, nycell.Rownumber].OccupiedBy.name);
                 return false;
             }
-            TheGrid[cell.Columnnumber, cell.Rownumber - i].AllowedMove = true;
+            TheGrid[nycell.Columnnumber, nycell.Rownumber].AllowedMove = true;
             return true;
         }
 
         private bool RplusTorn(cell cell, int i, bool v)
         {
-            if (TheGrid[cell.Columnnumber, cell.Rownumber + i].Occupied)
+            cell nycell = right(cell);
+            if (Occupied(nycell))
             {
-                MessageBox.Show("row +" + i + " " + TheGrid[cell.Columnnumber, cell.Rownumber + i].OccupiedBy.name);
-
+                MessageBox.Show("row +" + i + " " + TheGrid[nycell.Columnnumber, nycell.Rownumber].OccupiedBy.name);
                 return false;
             }
-            TheGrid[cell.Columnnumber, cell.Rownumber + i].AllowedMove = true;
+            TheGrid[nycell.Columnnumber, nycell.Rownumber].AllowedMove = true;
             return true;
         }
 
         private bool CplusTorn(cell cell, int i, bool v)
         {
-            if (TheGrid[cell.Columnnumber + i, cell.Rownumber].Occupied)
+            cell nycell = up(cell);
+            if (Occupied(nycell))
             {
-                #region ta pjäs
-                //string s = TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.name;
-                //if (v)
-                //{
-                //    if(s.StartsWith("S"))
-                //    {
-                //        TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
-                //    }
-
-                //}
-                //if(!v)
-                //{
-                //    if (s.StartsWith("V"))
-                //    {
-                //        TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
-                //    }
-
-                //}
-                #endregion
-                MessageBox.Show("col + "+ i + " " + TheGrid[cell.Columnnumber + i, cell.Rownumber].OccupiedBy.name);
+                MessageBox.Show("col +" + i + " " + TheGrid[nycell.Columnnumber, nycell.Rownumber].OccupiedBy.name);
                 return false;
             }
-            TheGrid[cell.Columnnumber + i, cell.Rownumber].AllowedMove = true;
+            TheGrid[nycell.Columnnumber, nycell.Rownumber].AllowedMove = true;
             return true;
         }
         private bool CminTorn(cell cell, int i, bool v)
         {
-            if (TheGrid[cell.Columnnumber - i, cell.Rownumber].Occupied)
+            cell nycell = down(cell);
+            if (Occupied(nycell))
             {
-                MessageBox.Show("col -" + i + " " + TheGrid[cell.Columnnumber - i, cell.Rownumber].OccupiedBy.name);
+                MessageBox.Show("col -" + i + " " + TheGrid[nycell.Columnnumber, nycell.Rownumber].OccupiedBy.name);
                 return false;
             }
-            TheGrid[cell.Columnnumber - i, cell.Rownumber].AllowedMove = true;
+            TheGrid[nycell.Columnnumber, nycell.Rownumber].AllowedMove = true;
             return true;
         }
         #endregion
 
+        #region allmäna metoder
+        public cell up(cell c)
+        {
+            return _ = new cell(c.Columnnumber + 1, c.Rownumber);
+        }
+        public cell down(cell c)
+        {
+            return _ = new cell(c.Columnnumber - 1, c.Rownumber);
+        }
+        public cell left(cell c)
+        {
+            return _ = new cell(c.Columnnumber, c.Rownumber - 1);
+        }
+        public cell right(cell c)
+        {
+            return _ = new cell(c.Columnnumber + 1, c.Rownumber);
+        }
+        #endregion
     }
     public class cell
     {
