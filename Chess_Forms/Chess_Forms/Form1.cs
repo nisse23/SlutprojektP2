@@ -281,6 +281,7 @@ namespace Chess_Forms
 
                     }
                 }
+<<<<<<< HEAD
                 piece s = (piece)r.Tag;
                 MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
                 Myboard.SelectedPiece = s;
@@ -300,6 +301,9 @@ namespace Chess_Forms
                     }
                 }
            //}
+=======
+            }
+>>>>>>> parent of 7ccf448 (fixade piece class och la till ta bort knapp)
         }
 
         private void CreateButtons()
@@ -560,7 +564,10 @@ namespace Chess_Forms
                 }
             }
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 7ccf448 (fixade piece class och la till ta bort knapp)
         public void Markallowedmove(cell currentCell, piece Selectedpiece)
         {
             for (int i = 0; i < size; i++)
@@ -1701,6 +1708,7 @@ namespace Chess_Forms
             }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 =======
             
@@ -1712,24 +1720,34 @@ namespace Chess_Forms
             bool rplus = true;
             bool rmin = true;
             for (int i = 1; i < 8; i++)
+=======
+            void Torn(cell cell, bool v)
+>>>>>>> parent of 7ccf448 (fixade piece class och la till ta bort knapp)
             {
-                if (cell.Columnnumber + i < 8 && cplus)
+                bool cplus = true;
+                bool cmin = true;
+                bool rplus = true;
+                bool rmin = true;
+                for (int i = 1; i < 8; i++)
                 {
-                    cplus = CplusTorn(cell, i, v);
+                    if (cell.Columnnumber + i < 8 && cplus)
+                    {
+                        cplus = CplusTorn(cell, i, v);
+                    }
+
+                    if (cell.Columnnumber - i >= 0 && cmin)
+                        cmin = CminTorn(cell, i, v);
+
+                    if (cell.Rownumber + i < 8 && rplus)
+                        rplus = RplusTorn(cell, i, v);
+
+                    if (cell.Rownumber - i >= 0 && rmin)
+                        rmin = RminTorn(cell, i, v);
+
                 }
-
-                if (cell.Columnnumber - i > -1 && cmin)
-                    cmin = CminTorn(cell, i, v);
-
-                if (cell.Rownumber + i < 8 && rplus)
-                    rplus = RplusTorn(cell, i, v);
-
-                if (cell.Rownumber - i > -1 && rmin)
-                    rmin = RminTorn(cell, i, v);
-
             }
+            
         }
-
         #region tornmetoder
         private bool RminTorn(cell cell, int i, bool v)
         {
