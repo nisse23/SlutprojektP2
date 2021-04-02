@@ -155,7 +155,6 @@ namespace Chess_Forms
                     TheGrid[j, i].AllowedMove = false;
                 }
             }
-
             switch (Selectedpiece.name)
             {
                 case "VTorn1":
@@ -232,7 +231,6 @@ namespace Chess_Forms
                         MessageBox.Show("nu har nått gått väldigt fel!");
                     break;
             }
-
         }
         #region getcellmetoder
         private cell Down(cell newcell)
@@ -952,7 +950,6 @@ namespace Chess_Forms
             }
 
             piece s = (piece)r.Tag;
-            //MessageBox.Show(s.currentCell.Columnnumber + " " + s.currentCell.Rownumber);
             SelectedPiece = s;
             Markallowedmove(s.currentCell, s);
             for (int x = 0; x < this.size; x++)
@@ -963,7 +960,6 @@ namespace Chess_Forms
 
                     if (cell.AllowedMove)
                     {
-                        //MessageBox.Show(j.ToString() +"," +  x.ToString() + "y,x allowed");
                         buttonGrid[j, x].FlatAppearance.BorderSize = 4;
                         buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
                     }
@@ -977,7 +973,7 @@ namespace Chess_Forms
         {
             Button b = (Button)sender;
             string[] btag = getBtntag(b);
-            //MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
+            MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
             if (SelectedPiece != null)
             {
                 piece s = SelectedPiece;
