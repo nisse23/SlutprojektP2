@@ -969,19 +969,14 @@ namespace Chess_Forms
         private void MarkallowedTiles(object sender, EventArgs e)
         {
             RadioButton r = (RadioButton)sender;
-
-
-            for (int z = 0; z < this.size; z++)
-            {
-                for (int j = 0; j < this.size; j++)
-                {
-                    buttonGrid[j, z].FlatAppearance.BorderSize = 0;
-
-
-                }
-            }
-
             piece s = (piece)r.Tag;
+
+            if (SelectedPiece != null)
+            {
+
+            }
+            resetbtns();
+
             SelectedPiece = s;
             Markallowedmove(s.currentCell, s);
             for (int x = 0; x < this.size; x++)
@@ -1005,7 +1000,7 @@ namespace Chess_Forms
         {
             Button b = (Button)sender;
             string[] btag = getBtntag(b);
-            MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
+            //MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
             if (SelectedPiece != null)
             {
                 piece s = SelectedPiece;

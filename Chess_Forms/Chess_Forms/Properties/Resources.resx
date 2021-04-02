@@ -118,77 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BondeI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BondeI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VitQueen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VitQueen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="QueenS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\QueenS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SvartQueen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartQueen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BishopS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BishopS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="KnightI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\KnightI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="KingI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\KingI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SvartKnight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartKnight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="VitKnight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VitKnight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VitBishop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VitBishop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SvartPawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartPawn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SvartKnight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SvartKnight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SvartBishop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartBishop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VitRook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VitRook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SvartPawn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SvartPawn1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pawn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BishopIfylld" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BishopIfylld.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SvartRook1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartRook1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VitKung" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VitKung.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SvartKung1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartKung1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SvartQueen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SvartQueen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Rook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="VitRook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VitRook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SvartKung" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartKung.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="QueenI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\QueenI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SvartBishop1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SvartBishop1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SvartRook1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SvartRook1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VitBishop1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VitBishop1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,10 +145,13 @@
   <data name="VitPawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VitPawn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SvartKung1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SvartKung1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SvartBishop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SvartBishop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VitBishop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VitBishop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="VitQueen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VitQueen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

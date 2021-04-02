@@ -59,18 +59,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -79,48 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rook.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pawn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BishopIfylld.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BondeI.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KnightI.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\QueenI.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KingI.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BishopS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\QueenS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SvartBishop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SvartKnight.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SvartKung.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SvartPawn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SvartBishop1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SvartBishop2.png" />
@@ -141,9 +99,6 @@
     <None Include="Resources\SvartRook1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\VitBishop.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\VitBishop1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -156,13 +111,10 @@
     <None Include="Resources\VitPawn.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\VitQueen.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\VitRook.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\VitBishop2.png" />
+    <None Include="Resources\VitQueen1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
