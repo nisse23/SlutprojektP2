@@ -24,21 +24,6 @@ namespace Chess_Forms
             //skapar en spelplan
             board Myboard = new board(panel1);
 
-
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-
-                    if (Myboard.TheGrid[j, i].Occupied)
-                    {
-                        //MessageBox.Show(j + " " + i + Myboard.TheGrid[j, i].OccupiedBy.name);
-
-                    }
-                }
-
-            }
-
         }
 
         private void buttonOmstart_Click(object sender, EventArgs e)
@@ -49,13 +34,17 @@ namespace Chess_Forms
     }
     public class move
     {
+        //pjäsen som ska flyttas
         public piece SPiece { get; set; }
+
+        //brädet som pjäsen flyttas på
         public board Myboard { get; set; }
         public move(board _Myboard, piece _SPiece)
         {
             SPiece = _SPiece;
             Myboard = _Myboard;
         }
+        //flyttar pjäsen
         public void MovePiece(Button b)
         {
             string[] sa = Myboard.getBtntag(b);
@@ -94,10 +83,19 @@ namespace Chess_Forms
     }
     public class piece
     {
+        //namnet på pjäsen
         public string name { get; set; }
+
+        //cellen som pjäsen står på just nu
         public cell currentCell { get; set; }
+        
+        //är pjäsen vit
         public bool IsWhite { get; set; }
+
+        //radiobuttonen som pjäsen är kopplad till
         public RadioButton rb { get; set; }
+
+        //specifierar ifall pjäsen har flyttats detta spelet
         public bool HasMoved { get; set; }
 
         public piece(string _name, cell _currentCell, board Myboard)
@@ -117,10 +115,13 @@ namespace Chess_Forms
         public int size { get; set; }
         //en 2d array som motsvarar spelplanen
         public cell[,] TheGrid { get; set; }
+        //den pjäsen som används just nu
         public piece SelectedPiece { get; set; }
         // lista med alla spelpjäser i form av radiobuttons
         public RadioButton[] pieceGrid;
+        //panelen i UIn
         public Panel panel1 { get; set; }
+        //en 2d array med alla knappar som motsvarar spelrutorna
         Button[,] buttonGrid ;
 
         public board(Panel _panel1)
@@ -144,6 +145,7 @@ namespace Chess_Forms
             GeneratePieces();
         }
         #region Metoder
+        //markerar de tillåtna dragen
         public void Markallowedmove(cell currentCell, piece Selectedpiece)
         {
             for (int i = 0; i < size; i++)
@@ -231,6 +233,7 @@ namespace Chess_Forms
             }
         }
         #region getcellmetoder
+        //kollar och markerar  ifall cellen nedanför är tillåten
         private cell Down(cell newcell)
         {
             if (newcell.Rownumber + 1 < 8)
@@ -243,6 +246,7 @@ namespace Chess_Forms
             return null;
         }
 
+        //kollar och markerar  ifall cellen ovanför är tillåten
         private cell Up(cell newcell)
         {
             if (newcell.Rownumber - 1 > -1)
@@ -254,6 +258,8 @@ namespace Chess_Forms
             }
             return null;
         }
+
+        //kollar och markerar ifall cellen till vänster är tillåten
         private cell Left(cell newcell)
         {
             if (newcell.Columnnumber - 1 > -1)
@@ -268,6 +274,8 @@ namespace Chess_Forms
             }
             return null;
         }
+
+        //kollar och markerar  ifall cellen till höger är tillåten
         private cell Right(cell newcell)
         {
             if (newcell.Columnnumber + 1 < 8)
@@ -280,6 +288,8 @@ namespace Chess_Forms
             }
             return null;
         }
+
+        //kollar och markerar ifall cellen uppe till vänster är tillåten
         private cell Up_left(cell newcell)
         {
             if (newcell.Columnnumber - 1 > -1 && newcell.Rownumber - 1 > -1)
@@ -293,6 +303,7 @@ namespace Chess_Forms
             return null;
         }
 
+        //kollar och markerar ifall cellen upep till höger är tillåten
         private cell Up_right(cell newcell)
         {
             if (newcell.Columnnumber + 1 < 8 && newcell.Rownumber - 1 > -1)
@@ -305,6 +316,8 @@ namespace Chess_Forms
             }
             return null;
         }
+
+        //kollar och markerar ifall cellen nere till vänster är tillåten
         private cell Down_left(cell newcell)
         {
             if (newcell.Columnnumber + 1 < 8 && newcell.Rownumber + 1 < 8)
@@ -316,6 +329,8 @@ namespace Chess_Forms
             }
             return null;
         }
+
+        //kollar och markerar ifall cellen nere till höger är tillåten
         private cell Down_right(cell newcell)
         {
 
@@ -330,6 +345,7 @@ namespace Chess_Forms
         }
 
         #region Hästmetoder
+        //kollar och markerar ifall cellen ett steg vänster och två steg ner är tillåten       
         private void Left1Down2(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber - 2 >= 0)
@@ -347,6 +363,7 @@ namespace Chess_Forms
 
         }
 
+        //kollar och markerar ifall cellen ett steg vänster och två steg upp är tillåten
         private void Left1Up2(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber + 2 < size)
@@ -363,6 +380,8 @@ namespace Chess_Forms
             }
 
         }
+
+        //kollar och markerar ifall cellen två steg vänster och ett steg ner är tillåten
         private void Left2Down1(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber - 1 >= 0)
@@ -381,6 +400,7 @@ namespace Chess_Forms
 
         }
 
+        //kollar och markerar ifall cellen två steg vänster och ett steg upp är tillåten
         private void Left2Up1(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber + 1 < size)
@@ -398,7 +418,7 @@ namespace Chess_Forms
 
         }
 
-
+        //kollar och markerar ifall cellen ett steg höger och två steg upp är tillåten
         private void Right1Up2(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber + 2 < size)
@@ -416,23 +436,7 @@ namespace Chess_Forms
 
         }
 
-        private void Right2Down1(cell currentCell, bool v)
-        {
-            if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber - 1 >= 0)
-            {
-                if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].Occupied)
-                {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
-                    }
-                }
-                else
-                    TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
-            }
-
-        }
-
+        //kollar och markerar ifall cellen ett steg höger och två steg ner är tillåten
         private void Right1Down2(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber - 2 >= 0)
@@ -450,6 +454,25 @@ namespace Chess_Forms
 
         }
 
+        //kollar och markerar ifall cellen två steg höger och ett steg ner är tillåten
+        private void Right2Down1(cell currentCell, bool v)
+        {
+            if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber - 1 >= 0)
+            {
+                if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].Occupied)
+                {
+                    if (v)
+                    {
+                        TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
+                    }
+                }
+                else
+                    TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
+            }
+
+        }
+
+        //kollar och markerar ifall cellen två steg höger och ett steg upp är tillåten
         private void Right2Up1(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber + 1 < size)
@@ -469,7 +492,7 @@ namespace Chess_Forms
         #endregion
         #endregion
 
-
+        //hämtar de tillåtna dragen för tornet
         void Torn(cell cell, bool v)
         {
             bool right = true;
@@ -513,6 +536,8 @@ namespace Chess_Forms
 
 
         }
+
+        //hämtar de tillåtna dragen för löparen
         private void Lopare(cell currentCell, bool v)
         {
             bool upleft = true;
@@ -549,6 +574,8 @@ namespace Chess_Forms
                     break;
             }
         }
+
+        //hämtar de tillåtna dragen för kungen
         private void Kung(cell currentCell, bool v)
         {
             Down(currentCell);
@@ -560,6 +587,8 @@ namespace Chess_Forms
             Down_left(currentCell);
             Down_right(currentCell);
         }
+
+        //hämtar de tillåtna dragen för hästen
         private void Hast(cell currentCell, bool v)
         {
             Right2Up1(currentCell, v);
@@ -991,6 +1020,7 @@ namespace Chess_Forms
             }
         }
 
+        //tar bort den tillåtna markeringen på knapparna
         private void resetbtns()
         {
             //tar bort indikatorn och ändrar statusen på cellen
@@ -1003,6 +1033,7 @@ namespace Chess_Forms
                 }
             }
         }
+        //hämtar tagen från en knapp
         public string[] getBtntag(Button b)
         {
             string str = (string)b.Tag;
@@ -1013,11 +1044,19 @@ namespace Chess_Forms
     }
     public class cell
     {
+        //radnumret på cell
         public int Rownumber { get; set; }
+
+        //kolumnnumret på cell
         public int Columnnumber { get; set; }
+
+        //är cellen upptagen
         public bool Occupied { get; set; }
+
+        //den pjäsen som ev okuperar cellen
         public piece OccupiedBy { get; set; }
 
+        //får en pjäs gå hit
         public bool AllowedMove { get; set; }
 
         public cell(int y, int x)
