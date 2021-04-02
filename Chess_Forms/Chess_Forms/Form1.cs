@@ -328,7 +328,9 @@ namespace Chess_Forms
             }
             return null;
         }
-        private void Left2Down2(cell currentCell, bool v)
+
+        #region Hästmetoder
+        private void Left1Down2(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber - 2 >= 0)
             {
@@ -345,7 +347,7 @@ namespace Chess_Forms
 
         }
 
-        private void Left2Up2(cell currentCell, bool v)
+        private void Left1Up2(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber + 2 < size)
             {
@@ -361,6 +363,41 @@ namespace Chess_Forms
             }
 
         }
+        private void Left2Down1(cell currentCell, bool v)
+        {
+            if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber - 1 >= 0)
+            {
+
+                if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].Occupied)
+                {
+                    if (v)
+                    {
+                        TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
+                    }
+                }
+                else
+                    TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
+            }
+
+        }
+
+        private void Left2Up1(cell currentCell, bool v)
+        {
+            if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber + 1 < size)
+            {
+                if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].Occupied)
+                {
+                    if (v)
+                    {
+                        TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
+                    }
+                }
+                else
+                    TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
+            }
+
+        }
+
 
         private void Right1Up2(cell currentCell, bool v)
         {
@@ -413,41 +450,6 @@ namespace Chess_Forms
 
         }
 
-        private void left2Down1(cell currentCell, bool v)
-        {
-            if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber - 1 >= 0)
-            {
-
-                if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].Occupied)
-                {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
-                    }
-                }
-                else
-                    TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
-            }
-
-        }
-
-        private void Left2Up1(cell currentCell, bool v)
-        {
-            if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber + 1 < size)
-            {
-                if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].Occupied)
-                {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
-                    }
-                }
-                else
-                    TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
-            }
-
-        }
-
         private void Right2Up1(cell currentCell, bool v)
         {
             if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber + 1 < size)
@@ -465,6 +467,9 @@ namespace Chess_Forms
 
         }
         #endregion
+        #endregion
+
+
         void Torn(cell cell, bool v)
         {
             bool right = true;
@@ -559,12 +564,12 @@ namespace Chess_Forms
         {
             Right2Up1(currentCell, v);
             Left2Up1(currentCell, v);
-            left2Down1(currentCell, v);
+            Left2Down1(currentCell, v);
             Right1Down2(currentCell, v);
             Right2Down1(currentCell, v);
             Right1Up2(currentCell, v);
-            Left2Up2(currentCell, v);
-            Left2Down2(currentCell, v);
+            Left1Up2(currentCell, v);
+            Left1Down2(currentCell, v);
         }
 
         //plaserar ut alla pjäser i arrayn
