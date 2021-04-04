@@ -70,6 +70,7 @@ namespace Chess_Forms
             SPiece.rb.Location = b.Location;
             SPiece.rb.Checked = false;
             SPiece.HasMoved = true;
+            Myboard.SelectedPiece = null;
 
             if (((SPiece.rb.Location.X / 65) + (SPiece.rb.Location.Y / 65)) % 2 == 0)
             {
@@ -213,34 +214,30 @@ namespace Chess_Forms
                 default:
                     if (Selectedpiece.name.StartsWith("VBonde"))
                     {
-                        cell newcell = Up(SelectedPiece.currentCell);
-                        if(newcell != null && !SelectedPiece.HasMoved)
-                        {
-                            Up(newcell);
-                        }
+                        VBonde(currentCell, SelectedPiece);
+                        
                     }
                     else if (Selectedpiece.name.StartsWith("SBonde"))
                     {
-                        cell newcell = Down(SelectedPiece.currentCell);
-                        if (newcell != null && !SelectedPiece.HasMoved)
-                        {
-                            Down(newcell);
-                        }
+                        SBonde(currentCell, SelectedPiece);
                     }
                     else
                         MessageBox.Show("nu har nått gått väldigt fel!");
                     break;
             }
         }
-        #region getcellmetoder
+
+
+        #region getcell-metoder
         //kollar och markerar  ifall cellen nedanför är tillåten
         private cell Down(cell newcell)
         {
             if (newcell.Rownumber + 1 < 8)
             {
-                if (TheGrid[newcell.Columnnumber, newcell.Rownumber + 1].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber, newcell.Rownumber + 1].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber, newcell.Rownumber + 1].Occupied)
+                    TheGrid[newcell.Columnnumber, newcell.Rownumber + 1].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber, newcell.Rownumber + 1]);
                 return new cell(newcell.Columnnumber, newcell.Rownumber + 1);
             }
             return null;
@@ -251,9 +248,10 @@ namespace Chess_Forms
         {
             if (newcell.Rownumber - 1 > -1)
             {
-                if (TheGrid[newcell.Columnnumber, newcell.Rownumber - 1].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber, newcell.Rownumber - 1].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber, newcell.Rownumber - 1].Occupied)
+                    TheGrid[newcell.Columnnumber, newcell.Rownumber - 1].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber, newcell.Rownumber - 1]);
                 return new cell(newcell.Columnnumber, newcell.Rownumber - 1);
             }
             return null;
@@ -264,11 +262,10 @@ namespace Chess_Forms
         {
             if (newcell.Columnnumber - 1 > -1)
             {
-                if (TheGrid[newcell.Columnnumber - 1, newcell.Rownumber].Occupied)
-                {
-                    return null;
-                }
-                TheGrid[newcell.Columnnumber - 1, newcell.Rownumber].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber - 1, newcell.Rownumber].Occupied)
+                    TheGrid[newcell.Columnnumber - 1, newcell.Rownumber].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber - 1, newcell.Rownumber]);
                 return new cell(newcell.Columnnumber - 1, newcell.Rownumber);
 
             }
@@ -280,9 +277,10 @@ namespace Chess_Forms
         {
             if (newcell.Columnnumber + 1 < 8)
             {
-                if (TheGrid[newcell.Columnnumber + 1, newcell.Rownumber].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber + 1, newcell.Rownumber].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber + 1, newcell.Rownumber].Occupied)
+                    TheGrid[newcell.Columnnumber + 1, newcell.Rownumber].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber + 1, newcell.Rownumber]);
                 return new cell(newcell.Columnnumber + 1, newcell.Rownumber);
 
             }
@@ -294,9 +292,10 @@ namespace Chess_Forms
         {
             if (newcell.Columnnumber - 1 > -1 && newcell.Rownumber - 1 > -1)
             {
-                if (TheGrid[newcell.Columnnumber - 1, newcell.Rownumber - 1].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber - 1, newcell.Rownumber - 1].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber - 1, newcell.Rownumber - 1].Occupied)
+                    TheGrid[newcell.Columnnumber - 1, newcell.Rownumber - 1].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber - 1, newcell.Rownumber - 1]);
                 return new cell(newcell.Columnnumber - 1, newcell.Rownumber - 1);
 
             }
@@ -308,9 +307,10 @@ namespace Chess_Forms
         {
             if (newcell.Columnnumber + 1 < 8 && newcell.Rownumber - 1 > -1)
             {
-                if (TheGrid[newcell.Columnnumber + 1, newcell.Rownumber - 1].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber + 1, newcell.Rownumber - 1].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber + 1, newcell.Rownumber - 1].Occupied)
+                    TheGrid[newcell.Columnnumber + 1, newcell.Rownumber - 1].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber + 1, newcell.Rownumber - 1]);
                 return new cell(newcell.Columnnumber + 1, newcell.Rownumber - 1);
 
             }
@@ -322,9 +322,10 @@ namespace Chess_Forms
         {
             if (newcell.Columnnumber + 1 < 8 && newcell.Rownumber + 1 < 8)
             {
-                if (TheGrid[newcell.Columnnumber + 1, newcell.Rownumber + 1].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber + 1, newcell.Rownumber + 1].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber + 1, newcell.Rownumber + 1].Occupied)
+                    TheGrid[newcell.Columnnumber + 1, newcell.Rownumber + 1].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber + 1, newcell.Rownumber + 1]);
                 return new cell(newcell.Columnnumber + 1, newcell.Rownumber + 1);
             }
             return null;
@@ -336,9 +337,10 @@ namespace Chess_Forms
 
             if (newcell.Columnnumber - 1 > -1 && newcell.Rownumber + 1 < 8)
             {
-                if (TheGrid[newcell.Columnnumber - 1, newcell.Rownumber + 1].Occupied)
-                    return null;
-                TheGrid[newcell.Columnnumber - 1, newcell.Rownumber + 1].AllowedMove = true;
+                if (!TheGrid[newcell.Columnnumber - 1, newcell.Rownumber + 1].Occupied)
+                    TheGrid[newcell.Columnnumber - 1, newcell.Rownumber + 1].AllowedMove = true;
+                else
+                    Occupied(TheGrid[newcell.Columnnumber - 1, newcell.Rownumber + 1]);
                 return new cell(newcell.Columnnumber - 1, newcell.Rownumber + 1);
             }
             return null;
@@ -352,10 +354,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 2].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 2].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 2]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber - 2].AllowedMove = true;
@@ -370,10 +370,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber - 1, currentCell.Rownumber + 2].AllowedMove = true;
@@ -389,10 +387,8 @@ namespace Chess_Forms
 
                 if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber - 1].AllowedMove = true;
@@ -407,10 +403,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber - 2, currentCell.Rownumber + 1].AllowedMove = true;
@@ -425,10 +419,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 2].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 2].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 2]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber + 2].AllowedMove = true;
@@ -443,10 +435,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 2].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 2].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 2]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber + 1, currentCell.Rownumber - 2].AllowedMove = true;
@@ -461,10 +451,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber - 1].AllowedMove = true;
@@ -479,10 +467,8 @@ namespace Chess_Forms
             {
                 if (TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1].Occupied)
                 {
-                    if (v)
-                    {
-                        TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1].AllowedMove = true;
-                    }
+                    //ifall det är motståndarens pjäs markerar metoden den som allowed annars inte
+                    Occupied(TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1]);
                 }
                 else
                     TheGrid[currentCell.Columnnumber + 2, currentCell.Rownumber + 1].AllowedMove = true;
@@ -599,6 +585,41 @@ namespace Chess_Forms
             Right1Up2(currentCell, v);
             Left1Up2(currentCell, v);
             Left1Down2(currentCell, v);
+        }
+
+        //hämtar de tillåtna dragen för vit bonde
+        private void VBonde(cell newcell, piece Spiece)
+        {
+            newcell = Up(newcell);
+            if (newcell != null && !SelectedPiece.HasMoved)
+            {
+                Up(newcell);
+            }
+        }
+
+        //hämtar de tillåtna dragen för svart bonde
+        private void SBonde(cell newcell, piece Spiece)
+        {
+            newcell = Down(newcell);
+            if (newcell != null && !SelectedPiece.HasMoved)
+            {
+                Down(newcell);
+            }
+        }
+
+        private void Occupied(cell newcell)
+        {
+            if(TheGrid[newcell.Columnnumber, newcell.Rownumber].OccupiedBy.IsWhite)
+            {
+                if (!SelectedPiece.IsWhite)
+                    TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove = true;
+            }
+            if(!TheGrid[newcell.Columnnumber, newcell.Rownumber].OccupiedBy.IsWhite)
+            {
+                if(SelectedPiece.IsWhite)
+                    TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove = true;
+
+            }
         }
 
         //plaserar ut alla pjäser i arrayn
@@ -973,26 +994,57 @@ namespace Chess_Forms
 
             if (SelectedPiece != null)
             {
-
+                CapturePiece(s, SelectedPiece);
             }
-            resetbtns();
-
-            SelectedPiece = s;
-            Markallowedmove(s.currentCell, s);
-            for (int x = 0; x < this.size; x++)
+            else
             {
-                for (int j = 0; j < this.size; j++)
-                {
-                    cell cell = this.TheGrid[j, x];
+                resetbtns();
 
-                    if (cell.AllowedMove)
+                SelectedPiece = s;
+                Markallowedmove(s.currentCell, s);
+                for (int x = 0; x < this.size; x++)
+                {
+                    for (int j = 0; j < this.size; j++)
                     {
-                        buttonGrid[j, x].FlatAppearance.BorderSize = 4;
-                        buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
+                        cell cell = this.TheGrid[j, x];
+
+                        if (cell.AllowedMove)
+                        {
+                            buttonGrid[j, x].FlatAppearance.BorderSize = 4;
+                            buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
+                        }
                     }
                 }
             }
 
+        }
+
+        private void CapturePiece(piece oldPiece, piece newPiece)
+        {
+            if (oldPiece.IsWhite)
+            {
+                if (!newPiece.IsWhite)
+                {
+                    panel1.Controls.Remove(oldPiece.rb);
+                    TheGrid[oldPiece.currentCell.Columnnumber, oldPiece.currentCell.Rownumber].Occupied = false;
+                    move move = new move(this, newPiece);
+                    move.MovePiece(buttonGrid[oldPiece.currentCell.Columnnumber, oldPiece.currentCell.Rownumber]);
+
+                }
+                else
+                {
+                    SelectedPiece = null;
+                }
+            }
+            if (!oldPiece.IsWhite)
+            {
+                if (newPiece.IsWhite)
+                    TheGrid[oldPiece.currentCell.Columnnumber, oldPiece.currentCell.Rownumber].AllowedMove = true;
+                else
+                {
+                    SelectedPiece = null;
+                }
+            }
         }
 
         //när man klickar på en button triggas denna
