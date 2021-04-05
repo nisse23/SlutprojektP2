@@ -491,7 +491,7 @@ namespace Chess_Forms
             while (right)
             {
                 newcell = Right(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                     break;                   
             }
             newcell = SelectedPiece.currentCell;
@@ -506,7 +506,7 @@ namespace Chess_Forms
             while (down)
             {
                 newcell = Down(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                 {
                     break;
                 }              
@@ -515,7 +515,7 @@ namespace Chess_Forms
             while (up)
             {             
                 newcell = Up(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                 {
                     break;
                 }               
@@ -535,21 +535,21 @@ namespace Chess_Forms
             while (downright)
             {
                 newcell = Down_right(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                     break;
             }
             newcell = SelectedPiece.currentCell;
             while (downleft)
             {
                 newcell = Down_left(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                     break;
             }
             newcell = SelectedPiece.currentCell;
             while (upleft)
             {
                 newcell = Up_left(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                     break;
             }
             newcell = SelectedPiece.currentCell;
@@ -557,7 +557,7 @@ namespace Chess_Forms
             {
 
                 newcell = Up_right(newcell);
-                if (newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove)
+                if ((newcell == null || !TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove) || TheGrid[newcell.Columnnumber, newcell.Rownumber].Occupied)
                     break;
             }
         }
