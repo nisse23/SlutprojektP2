@@ -48,6 +48,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.buttonStart = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -65,9 +66,9 @@
             // 
             this.buttonOmstart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonOmstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOmstart.Location = new System.Drawing.Point(583, 70);
+            this.buttonOmstart.Location = new System.Drawing.Point(583, 99);
             this.buttonOmstart.Name = "buttonOmstart";
-            this.buttonOmstart.Size = new System.Drawing.Size(75, 23);
+            this.buttonOmstart.Size = new System.Drawing.Size(87, 23);
             this.buttonOmstart.TabIndex = 1;
             this.buttonOmstart.Text = "Starta Om";
             this.buttonOmstart.UseVisualStyleBackColor = true;
@@ -247,11 +248,24 @@
             this.label16.TabIndex = 14;
             this.label16.Text = "5";
             // 
+            // buttonStart
+            // 
+            this.buttonStart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStart.Location = new System.Drawing.Point(583, 70);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(87, 23);
+            this.buttonStart.TabIndex = 11;
+            this.buttonStart.Text = "Starta spelet";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 668);
+            this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buttonOmstart);
@@ -289,6 +303,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button buttonStart;
     }
 }
 

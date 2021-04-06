@@ -21,16 +21,27 @@ namespace Chess_Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //skapar en spelplan
-            board Myboard = new board(panel1);
 
         }
-
-        private void buttonOmstart_Click(object sender, EventArgs e)
+        board myboard;
+        public void buttonOmstart_Click(object sender, EventArgs e)
         {
-            //placePiecesInStart();
+            //startar om spelet ifall det är startat och startar det annars
+            if (myboard != null)
+            {
+                myboard.RemoveAllpieces();
+                myboard.GeneratePieces();
+            }
+
         }
 
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            //skapar en spelplan och initierar spelet
+            if(myboard == null)
+                myboard = new board(panel1);
+
+        }
     }
     public class move
     {
@@ -80,7 +91,8 @@ namespace Chess_Forms
             else
             {
                 SPiece.rb.BackColor = Color.Black;
-            }            
+            }
+            Myboard.IsSchack(SPiece);
         }       
     }
     public class piece
@@ -142,93 +154,10 @@ namespace Chess_Forms
 
                 }
             }
-            placePiecesInStart();
             CreateButtons();
             GeneratePieces();
         }
         #region Metoder
-        //markerar de tillåtna dragen
-        public void Markallowedmove(cell currentCell, piece Selectedpiece)
-        {
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    TheGrid[j, i].AllowedMove = false;
-                }
-            }
-            switch (Selectedpiece.name)
-            {
-                case "VTorn1":
-                case "VTorn2":
-                    //kan gå vertikalt och horisontellt
-                    Torn(currentCell, false);
-                    break;
-                case "STorn1":
-                case "STorn2":
-                    //kan gå vertikalt och horisontellt
-                    Torn(currentCell, true);
-                    break;
-                case "VLöpare1":
-                case "VLöpare2":
-                    //löpare kan gå diagonalt
-                    Lopare(currentCell, false);           
-                    break;
-                case "SLöpare1":
-                case "SLöpare2":
-                    //löpare kan gå diagonalt
-                    Lopare(currentCell, true);
-                    break;
-                case "VKung":
-                    // kan gå ett steg åt alla håll
-                    Kung(currentCell, false);
-
-                    break;
-                case "SKung":
-                    // kan gå ett steg åt alla håll
-                    Kung(currentCell, true);
-                    break;
-                case "SDrottning":
-                    //diagonal / löpare
-                    Lopare(currentCell, true);
-                    //vertikal o horisontelt / torn
-                    Torn(currentCell, true);
-                    break;
-                case "VDrottning":
-                    //diagonal / löpare
-                    Lopare(currentCell, false);
-                    //vertikal o horisontelt / torn
-                    Torn(currentCell, false);
-
-                    break;
-                case "VHäst1":
-                case "VHäst2":
-                    //hästen kan gå två steg fram och ett åt sidan
-                    Hast(currentCell, false);
-                    break;
-                case "SHäst1":
-                case "SHäst2":
-
-                    //hästen kan gå två steg fram och ett åt sidan
-                    Hast(currentCell, true);
-                    break;
-                default:
-                    if (Selectedpiece.name.StartsWith("VBonde"))
-                    {
-                        VBonde(currentCell, SelectedPiece);
-                        
-                    }
-                    else if (Selectedpiece.name.StartsWith("SBonde"))
-                    {
-                        SBonde(currentCell, SelectedPiece);
-                    }
-                    else
-                        MessageBox.Show("nu har nått gått väldigt fel!");
-                    break;
-            }
-        }
-
-
         #region getcell-metoder
         //kollar och markerar  ifall cellen nedanför är tillåten
         private cell Down(cell newcell)
@@ -479,8 +408,9 @@ namespace Chess_Forms
         #endregion
         #endregion
 
+        #region pjäsmetoder
         //hämtar de tillåtna dragen för tornet
-        void Torn(cell cell, bool v)
+        void Torn(cell cell)
         {
             bool right = true;
             bool left = true;
@@ -525,7 +455,7 @@ namespace Chess_Forms
         }
 
         //hämtar de tillåtna dragen för löparen
-        private void Lopare(cell currentCell, bool v)
+        private void Lopare(cell currentCell)
         {
             bool upleft = true;
             bool upright = true;
@@ -563,7 +493,7 @@ namespace Chess_Forms
         }
 
         //hämtar de tillåtna dragen för kungen
-        private void Kung(cell currentCell, bool v)
+        private void Kung(cell currentCell)
         {
             Down(currentCell);
             Up(currentCell);
@@ -589,32 +519,56 @@ namespace Chess_Forms
         }
 
         //hämtar de tillåtna dragen för vit bonde
-        private void VBonde(cell newcell, piece Spiece)
+        private void VBonde(cell newcell, piece p)
         {
-            newcell = Up(newcell);
-            if (newcell != null && !SelectedPiece.HasMoved)
+            cell c;
+            c = Up_left(newcell);
+            if (c != null && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
+
+            c = Up_right(newcell);
+            if (c != null && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
+
+            c = Up(newcell);
+            if (c != null && TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
+            if (c != null && !p.HasMoved)
             {
-                Up(newcell);
+                Up(c);
             }
         }
 
         //hämtar de tillåtna dragen för svart bonde
-        private void SBonde(cell newcell, piece Spiece)
+        private void SBonde(cell newcell, piece p)
         {
-            newcell = Down(newcell);
-            if (newcell != null && !SelectedPiece.HasMoved)
+            cell c;
+            c = Down_left(newcell);
+            if (c != null && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
+
+            c = Down_right(newcell);
+            if (c != null && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
+
+            c = Down(newcell);
+            if (c != null && TheGrid[c.Columnnumber, c.Rownumber].Occupied)
+                TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
+            if (c != null && !p.HasMoved)
             {
-                Down(newcell);
+                Down(c);
             }
         }
+        #endregion
 
+        //kollar ifall rutan är tagen av motståndarens pjäs och markerar den isf
         private void Occupied(cell newcell)
         {
             if(TheGrid[newcell.Columnnumber, newcell.Rownumber].OccupiedBy.IsWhite != SelectedPiece.IsWhite)
             {
-                    TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove = true;
-
+                TheGrid[newcell.Columnnumber, newcell.Rownumber].AllowedMove = true;
             }
+
         }
 
         //plaserar ut alla pjäser i arrayn
@@ -779,7 +733,7 @@ namespace Chess_Forms
             placePiecesInStart();
 
             //räknar ut storleken på btns. =65
-            int pieceSize = 65;
+            int pieceSize = panel1.Width / size;
             //variabler
             int i = 0;
 
@@ -981,48 +935,124 @@ namespace Chess_Forms
 
 
         }
+        
         //markerar de tillåtna buttons
         private void MarkallowedTiles(object sender, EventArgs e)
         {
             RadioButton r = (RadioButton)sender;
             piece s = (piece)r.Tag;
-            
+            bool t = false;
 
             if (SelectedPiece != null && SelectedPiece.IsWhite != s.IsWhite)
             {
 
-                CapturePiece(s, SelectedPiece);
+                t = CapturePiece(s, SelectedPiece);
             }
-            else
+            if(t == false)
             {
                 resetbtns();
 
                 SelectedPiece = s;
                 Markallowedmove(s.currentCell, s);
-                for (int x = 0; x < this.size; x++)
+                for (int x = 0; x < size; x++)
                 {
-                    for (int j = 0; j < this.size; j++)
+                    for (int j = 0; j < size; j++)
                     {
-                        cell cell = this.TheGrid[j, x];
+                        cell cell = TheGrid[j, x];
 
-                        if (cell.AllowedMove)
-                        {
-                            if (cell.Occupied)
-                            {
-                                cell.OccupiedBy.rb.FlatAppearance.BorderSize = 4;
-                                cell.OccupiedBy.rb.FlatAppearance.BorderColor = Color.Green;
-
-                            }
-                            buttonGrid[j, x].FlatAppearance.BorderSize = 4;
-                            buttonGrid[j, x].FlatAppearance.BorderColor = Color.Green;
-                        }
+                        markbtns(cell);
+                        
                     }
                 }
             }
 
         }
 
-        private void CapturePiece(piece oldPiece, piece newPiece)
+        //markerar de tillåtna dragen
+        public void Markallowedmove(cell currentCell, piece Selectedpiece)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    TheGrid[j, i].AllowedMove = false;
+                }
+            }
+            switch (Selectedpiece.name)
+            {
+                case "VTorn1":
+                case "VTorn2":
+                case "STorn1":
+                case "STorn2":
+                    //kan gå vertikalt och horisontellt
+                    Torn(currentCell);
+                    break;
+                case "VLöpare1":
+                case "VLöpare2":
+                case "SLöpare1":
+                case "SLöpare2":
+                    //löpare kan gå diagonalt
+                    Lopare(currentCell);
+                    break;
+                case "VKung":
+                case "SKung":
+
+                    // kan gå ett steg åt alla håll
+                    Kung(currentCell);
+                    break;
+                case "SDrottning":
+                case "VDrottning":
+
+                    //diagonal / löpare
+                    Lopare(currentCell);
+                    //vertikal o horisontelt / torn
+                    Torn(currentCell);
+                    break;
+                case "VHäst1":
+                case "VHäst2":
+                    //hästen kan gå två steg fram och ett åt sidan
+                    Hast(currentCell, false);
+                    break;
+                case "SHäst1":
+                case "SHäst2":
+                    //hästen kan gå två steg fram och ett åt sidan
+                    Hast(currentCell, true);
+                    break;
+                default:
+                    if (Selectedpiece.name.StartsWith("VBonde"))
+                    {
+                        VBonde(currentCell, Selectedpiece);
+
+                    }
+                    else if (Selectedpiece.name.StartsWith("SBonde"))
+                    {
+                        SBonde(currentCell, Selectedpiece);
+                    }
+                    else
+                        MessageBox.Show("nu har nått gått väldigt fel!");
+                    break;
+            }
+        }
+
+        //markerar de btns som man får flytta till
+        private void markbtns(cell cell)
+        {
+            
+            if (cell.AllowedMove)
+            {
+                if (cell.Occupied)
+                {
+                    cell.OccupiedBy.rb.FlatAppearance.BorderSize = 4;
+                    cell.OccupiedBy.rb.FlatAppearance.BorderColor = Color.Green;
+
+                }
+                buttonGrid[cell.Columnnumber, cell.Rownumber].FlatAppearance.BorderSize = 4;
+                buttonGrid[cell.Columnnumber, cell.Rownumber].FlatAppearance.BorderColor = Color.Green;
+            }
+        }
+
+        //tar motståndarens pjäs ifall det är tillåtet
+        private bool CapturePiece(piece oldPiece, piece newPiece)
         {
             if (oldPiece.rb.FlatAppearance.BorderSize == 4)
             {
@@ -1031,7 +1061,36 @@ namespace Chess_Forms
                 move move = new move(this, newPiece);
                 move.MovePiece(buttonGrid[oldPiece.currentCell.Columnnumber, oldPiece.currentCell.Rownumber]);
                 resetbtns();
+                if(oldPiece.name.EndsWith("Kung"))
+                {
+                    if (newPiece.IsWhite)
+                        MessageBox.Show("Vit vann");
+                    else
+                        MessageBox.Show("Svart vann");
+                    RemoveAllpieces();
+                    GeneratePieces();
+                }
+                return true;
             }
+            return false;
+        }
+
+        //tar bort alla rbs och tar bort dem från arrayn
+        public void RemoveAllpieces()
+        {
+            for (int i = 0; i < pieceGrid.Length; i++)
+            {
+                panel1.Controls.Remove(pieceGrid[i]);
+            }
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    TheGrid[j, i].Occupied = false;
+                    TheGrid[j, i].OccupiedBy = null;
+                }
+            }
+            resetbtns();
         }
 
         //när man klickar på en button triggas denna
@@ -1069,12 +1128,33 @@ namespace Chess_Forms
                 }
             }
         }
+
         //hämtar tagen från en knapp
         public string[] getBtntag(Button b)
         {
             string str = (string)b.Tag;
 
             return str.Split(',');
+        }
+
+        //kollar ifall det är schack
+        internal void IsSchack(piece sPiece)
+        {
+            SelectedPiece = sPiece;
+            Markallowedmove(sPiece.currentCell, sPiece);
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (TheGrid[j, i].Occupied == true && TheGrid[j, i].OccupiedBy.name.EndsWith("Kung") && TheGrid[j, i].AllowedMove)
+                    {
+                        MessageBox.Show("schack");
+                    }
+                }
+            }
+            SelectedPiece = null;
+            resetbtns();
+
         }
         #endregion
     }
