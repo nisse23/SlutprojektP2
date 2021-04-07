@@ -86,11 +86,11 @@ namespace Chess_Forms
 
             if (((SPiece.rb.Location.X / 65) + (SPiece.rb.Location.Y / 65)) % 2 == 0)
             {
-                SPiece.rb.BackColor = Color.White;
+                SPiece.rb.BackColor = Myboard.backcolor2;
             }
             else
             {
-                SPiece.rb.BackColor = Color.Black;
+                SPiece.rb.BackColor = Myboard.backcolor1;
             }
             Myboard.IsSchack(SPiece);
         }       
@@ -137,6 +137,8 @@ namespace Chess_Forms
         public Panel panel1 { get; set; }
         //en 2d array med alla knappar som motsvarar spelrutorna
         Button[,] buttonGrid ;
+        public Color backcolor1 { get; set; }
+        public Color backcolor2 { get; set; }
 
         public board(Panel _panel1)
         {
@@ -145,6 +147,8 @@ namespace Chess_Forms
             pieceGrid = new RadioButton[32];
             buttonGrid = new Button[size, size];
             TheGrid = new cell[size, size];
+            backcolor1 = Color.Black;
+            backcolor2 = Color.White;
 
             for (int x = 0; x < size; x++)
             {
@@ -715,10 +719,10 @@ namespace Chess_Forms
                     buttonGrid[j, i].Location = new Point(j * buttonGrid[j, i].Height, buttonGrid[j, i].Width * i);
                     if (((j + i) % 2) == 0)
                     {
-                        buttonGrid[j, i].BackColor = Color.White;
+                        buttonGrid[j, i].BackColor = backcolor2;
                     }
                     else
-                        buttonGrid[j, i].BackColor = Color.Black;
+                        buttonGrid[j, i].BackColor = backcolor1;
                     buttonGrid[j, i].Tag = j + "," + i;
                     buttonGrid[j, i].FlatStyle = FlatStyle.Flat;
                     buttonGrid[j, i].FlatAppearance.BorderSize = 0;
@@ -766,7 +770,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitRook;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.Black;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -774,7 +778,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitRook;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -782,7 +786,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitKnight;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -804,7 +808,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitBishop1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -819,7 +823,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitQueen;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -828,7 +832,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * 0, pieceSize * 0);
                                 pieceGrid[i].Image = Properties.Resources.SvartRook1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
 
                                 i++;
@@ -837,7 +841,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartRook1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.Black;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -845,7 +849,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartKnight1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.Black;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -853,7 +857,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartKnight1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -862,7 +866,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartBishop2;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -884,7 +888,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartQueen1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = Color.White;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -898,11 +902,11 @@ namespace Chess_Forms
 
                                     if (i % 2 == 0)
                                     {
-                                        pieceGrid[i].BackColor = Color.White;
+                                        pieceGrid[i].BackColor = backcolor2;
                                     }
                                     else
                                     {
-                                        pieceGrid[i].BackColor = Color.Black;
+                                        pieceGrid[i].BackColor = backcolor1;
                                     }
                                     i++;
                                 }
@@ -915,11 +919,11 @@ namespace Chess_Forms
 
                                     if (i % 2 == 0)
                                     {
-                                        pieceGrid[i].BackColor = Color.Black;
+                                        pieceGrid[i].BackColor = backcolor1;
                                     }
                                     else
                                     {
-                                        pieceGrid[i].BackColor = Color.White;
+                                        pieceGrid[i].BackColor = backcolor2;
                                     }
                                     i++;
                                 }
@@ -1043,11 +1047,11 @@ namespace Chess_Forms
                 if (cell.Occupied)
                 {
                     cell.OccupiedBy.rb.FlatAppearance.BorderSize = 4;
-                    cell.OccupiedBy.rb.FlatAppearance.BorderColor = Color.Green;
+                    cell.OccupiedBy.rb.FlatAppearance.BorderColor = Color.Blue;
 
                 }
                 buttonGrid[cell.Columnnumber, cell.Rownumber].FlatAppearance.BorderSize = 4;
-                buttonGrid[cell.Columnnumber, cell.Rownumber].FlatAppearance.BorderColor = Color.Green;
+                buttonGrid[cell.Columnnumber, cell.Rownumber].FlatAppearance.BorderColor = Color.Blue;
             }
         }
 
