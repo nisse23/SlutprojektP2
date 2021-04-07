@@ -147,7 +147,7 @@ namespace Chess_Forms
     }
     public class board
     {
-
+        #region Properties
         //storleken på spelplanen
         public int size { get; set; }
         //en 2d array som motsvarar spelplanen
@@ -160,11 +160,11 @@ namespace Chess_Forms
         public Panel panel1 { get; set; }
         //en 2d array med alla knappar som motsvarar spelrutorna
         Button[,] buttonGrid;
+        //en prop för den första bakgrundsfärgen
         public Color backcolor1 { get; set; }
+        //en prop för den andra bakgrundsfärgen
         public Color backcolor2 { get; set; }
-
-
-
+        #endregion
         public board(Panel _panel1)
         {
             panel1 = _panel1;
@@ -786,7 +786,7 @@ namespace Chess_Forms
                         switch (cell.OccupiedBy.name)
                         {
                             //vita pjäser
-
+                            #region vita pjäser
                             case "VTorn1":
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitRook;
@@ -851,6 +851,8 @@ namespace Chess_Forms
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
+                            #endregion
+                            #region Svarta pjäser
                             //svart pjäser
                             case "STorn1":
                                 pieceGrid[i].Location = new Point(pieceSize * 0, pieceSize * 0);
@@ -918,6 +920,7 @@ namespace Chess_Forms
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
+                            #endregion
                             default:
                                 if (cell.OccupiedBy.name.StartsWith("VBonde"))
                                 {
@@ -1184,6 +1187,8 @@ namespace Chess_Forms
             }
             
         }
+
+        //uppdaterar bakgrundsfärgen på rbs
         public void ChangeRbBackColor()
         {
             for (int i = 0; i < 32; i++)
