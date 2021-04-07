@@ -42,6 +42,29 @@ namespace Chess_Forms
                 myboard = new board(panel1);
 
         }
+
+        //ändrar den första bakgrundsfärgen
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                myboard.backcolor1 = colorDialog1.Color;
+                myboard.ChangeBackColor();
+                myboard.ChangeRbBackColor();
+            }
+
+        }
+
+        //ändrar den andra bakgrundsfärgen
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                myboard.backcolor1 = colorDialog1.Color;
+                myboard.ChangeBackColor();
+                myboard.ChangeRbBackColor();
+            }
+        }
     }
     public class move
     {
@@ -136,9 +159,11 @@ namespace Chess_Forms
         //panelen i UIn
         public Panel panel1 { get; set; }
         //en 2d array med alla knappar som motsvarar spelrutorna
-        Button[,] buttonGrid ;
+        Button[,] buttonGrid;
         public Color backcolor1 { get; set; }
         public Color backcolor2 { get; set; }
+
+
 
         public board(Panel _panel1)
         {
@@ -635,12 +660,12 @@ namespace Chess_Forms
             this.TheGrid[5, 0].OccupiedBy = SLöpare2;
             SLöpare2.IsWhite = false;
 
-            piece SKung = new piece("SKung", new cell(3, 0), this);
-            this.TheGrid[3, 0].OccupiedBy = SKung;
+            piece SKung = new piece("SKung", new cell(4, 0), this);
+            this.TheGrid[4, 0].OccupiedBy = SKung;
             SKung.IsWhite = false;
 
-            piece SDrottning = new piece("SDrottning", new cell(4, 0), this);
-            this.TheGrid[4, 0].OccupiedBy = SDrottning;
+            piece SDrottning = new piece("SDrottning", new cell(3, 0), this);
+            this.TheGrid[3, 0].OccupiedBy = SDrottning;
             SDrottning.IsWhite = false;
             #endregion
             #region vita pjäser
@@ -717,17 +742,13 @@ namespace Chess_Forms
 
                     panel1.Controls.Add(buttonGrid[j, i]);
                     buttonGrid[j, i].Location = new Point(j * buttonGrid[j, i].Height, buttonGrid[j, i].Width * i);
-                    if (((j + i) % 2) == 0)
-                    {
-                        buttonGrid[j, i].BackColor = backcolor2;
-                    }
-                    else
-                        buttonGrid[j, i].BackColor = backcolor1;
                     buttonGrid[j, i].Tag = j + "," + i;
                     buttonGrid[j, i].FlatStyle = FlatStyle.Flat;
                     buttonGrid[j, i].FlatAppearance.BorderSize = 0;
                 }
             }
+            ChangeBackColor();
+
         }
 
         //skapar och placerar ut alla spelpjäser
@@ -794,6 +815,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitKnight;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -801,6 +823,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitBishop1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -816,6 +839,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.VitKung;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -874,6 +898,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartBishop2;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -881,6 +906,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartKung1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
+                                pieceGrid[i].BackColor = backcolor2;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -888,7 +914,7 @@ namespace Chess_Forms
                                 pieceGrid[i].Location = new Point(pieceSize * cell.Columnnumber, pieceSize * cell.Rownumber);
                                 pieceGrid[i].Image = Properties.Resources.SvartQueen1;
                                 pieceGrid[i].Tag = cell.OccupiedBy;
-                                pieceGrid[i].BackColor = backcolor2;
+                                pieceGrid[i].BackColor = backcolor1;
                                 cell.OccupiedBy.rb = pieceGrid[i];
                                 i++;
                                 break;
@@ -1139,6 +1165,38 @@ namespace Chess_Forms
             string str = (string)b.Tag;
 
             return str.Split(',');
+        }
+
+        //uppdaterar bakgrundsfärgen på btns
+        public void ChangeBackColor()
+        {
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (((j + i) % 2) == 0)
+                    {
+                        buttonGrid[j, i].BackColor = backcolor2;
+                    }
+                    else
+                        buttonGrid[j, i].BackColor = backcolor1;
+                }
+            }
+            
+        }
+        public void ChangeRbBackColor()
+        {
+            for (int i = 0; i < 32; i++)
+            {
+                if (((pieceGrid[i].Location.X / 65) + (pieceGrid[i].Location.Y / 65)) % 2 == 0)
+                {
+                    pieceGrid[i].BackColor = backcolor2;
+                }
+                else
+                {
+                    pieceGrid[i].BackColor = backcolor1;
+                }
+            }
         }
 
         //kollar ifall det är schack

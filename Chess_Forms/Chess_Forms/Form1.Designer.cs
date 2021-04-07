@@ -49,6 +49,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +71,7 @@
             this.buttonOmstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOmstart.Location = new System.Drawing.Point(583, 99);
             this.buttonOmstart.Name = "buttonOmstart";
-            this.buttonOmstart.Size = new System.Drawing.Size(87, 23);
+            this.buttonOmstart.Size = new System.Drawing.Size(97, 23);
             this.buttonOmstart.TabIndex = 1;
             this.buttonOmstart.Text = "Starta Om";
             this.buttonOmstart.UseVisualStyleBackColor = true;
@@ -254,17 +257,41 @@
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStart.Location = new System.Drawing.Point(583, 70);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(87, 23);
+            this.buttonStart.Size = new System.Drawing.Size(97, 23);
             this.buttonStart.TabIndex = 11;
             this.buttonStart.Text = "Starta spelet";
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(584, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Bakgrundsfärg 1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(584, 160);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Bakgrundsfärg 2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 668);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -304,6 +331,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
