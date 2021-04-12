@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonOmstart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,34 +47,27 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.buttonStart = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.färg1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.färg2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startaOmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.standardFärgerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(57, 70);
+            this.panel1.Location = new System.Drawing.Point(58, 115);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(520, 520);
             this.panel1.TabIndex = 0;
-            // 
-            // buttonOmstart
-            // 
-            this.buttonOmstart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonOmstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOmstart.Location = new System.Drawing.Point(583, 99);
-            this.buttonOmstart.Name = "buttonOmstart";
-            this.buttonOmstart.Size = new System.Drawing.Size(97, 23);
-            this.buttonOmstart.TabIndex = 1;
-            this.buttonOmstart.Text = "Starta Om";
-            this.buttonOmstart.UseVisualStyleBackColor = true;
-            this.buttonOmstart.Click += new System.EventHandler(this.buttonOmstart_Click);
             // 
             // label1
             // 
@@ -159,7 +151,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(3, 70);
+            this.panel2.Location = new System.Drawing.Point(4, 115);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(48, 520);
             this.panel2.TabIndex = 10;
@@ -174,7 +166,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Location = new System.Drawing.Point(57, 12);
+            this.panel3.Location = new System.Drawing.Point(58, 57);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(520, 52);
             this.panel3.TabIndex = 0;
@@ -251,52 +243,73 @@
             this.label16.TabIndex = 14;
             this.label16.Text = "5";
             // 
-            // buttonStart
+            // menuStrip1
             // 
-            this.buttonStart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStart.Location = new System.Drawing.Point(583, 70);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(97, 23);
-            this.buttonStart.TabIndex = 11;
-            this.buttonStart.Text = "Starta spelet";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem,
+            this.startaOmToolStripMenuItem,
+            this.settingsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(756, 24);
+            this.menuStrip1.TabIndex = 14;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // button1
+            // startToolStripMenuItem
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(584, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Bakgrundsfärg 1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.startToolStripMenuItem.Text = "Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
-            // button2
+            // settingsToolStripMenuItem
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(584, 160);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Bakgrundsfärg 2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.färg1ToolStripMenuItem,
+            this.färg2ToolStripMenuItem,
+            this.standardFärgerToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // färg1ToolStripMenuItem
+            // 
+            this.färg1ToolStripMenuItem.Name = "färg1ToolStripMenuItem";
+            this.färg1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.färg1ToolStripMenuItem.Text = "Färg 1 (Svart)";
+            this.färg1ToolStripMenuItem.Click += new System.EventHandler(this.Färg1ToolStripMenuItem_Click);
+            // 
+            // färg2ToolStripMenuItem
+            // 
+            this.färg2ToolStripMenuItem.Name = "färg2ToolStripMenuItem";
+            this.färg2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.färg2ToolStripMenuItem.Text = "Färg 2 (Vit)";
+            this.färg2ToolStripMenuItem.Click += new System.EventHandler(this.Färg2ToolStripMenuItem_Click);
+            // 
+            // startaOmToolStripMenuItem
+            // 
+            this.startaOmToolStripMenuItem.Name = "startaOmToolStripMenuItem";
+            this.startaOmToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.startaOmToolStripMenuItem.Text = "Starta om";
+            this.startaOmToolStripMenuItem.Click += new System.EventHandler(this.StartaOmToolStripMenuItem_Click);
+            // 
+            // standardFärgerToolStripMenuItem
+            // 
+            this.standardFärgerToolStripMenuItem.Name = "standardFärgerToolStripMenuItem";
+            this.standardFärgerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.standardFärgerToolStripMenuItem.Text = "Standard färger";
+            this.standardFärgerToolStripMenuItem.Click += new System.EventHandler(this.StandardFärgerToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 668);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonStart);
+            this.ClientSize = new System.Drawing.Size(756, 702);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buttonOmstart);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -304,14 +317,16 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonOmstart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -330,10 +345,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem färg1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem färg2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startaOmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem standardFärgerToolStripMenuItem;
     }
 }
 
