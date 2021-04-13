@@ -50,11 +50,12 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startaOmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.färg1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.färg2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startaOmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.standardFärgerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -262,6 +263,13 @@
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
+            // startaOmToolStripMenuItem
+            // 
+            this.startaOmToolStripMenuItem.Name = "startaOmToolStripMenuItem";
+            this.startaOmToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.startaOmToolStripMenuItem.Text = "Starta om";
+            this.startaOmToolStripMenuItem.Click += new System.EventHandler(this.StartaOmToolStripMenuItem_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -275,28 +283,21 @@
             // färg1ToolStripMenuItem
             // 
             this.färg1ToolStripMenuItem.Name = "färg1ToolStripMenuItem";
-            this.färg1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.färg1ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.färg1ToolStripMenuItem.Text = "Färg 1 (Svart)";
             this.färg1ToolStripMenuItem.Click += new System.EventHandler(this.Färg1ToolStripMenuItem_Click);
             // 
             // färg2ToolStripMenuItem
             // 
             this.färg2ToolStripMenuItem.Name = "färg2ToolStripMenuItem";
-            this.färg2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.färg2ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.färg2ToolStripMenuItem.Text = "Färg 2 (Vit)";
             this.färg2ToolStripMenuItem.Click += new System.EventHandler(this.Färg2ToolStripMenuItem_Click);
-            // 
-            // startaOmToolStripMenuItem
-            // 
-            this.startaOmToolStripMenuItem.Name = "startaOmToolStripMenuItem";
-            this.startaOmToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.startaOmToolStripMenuItem.Text = "Starta om";
-            this.startaOmToolStripMenuItem.Click += new System.EventHandler(this.StartaOmToolStripMenuItem_Click);
             // 
             // standardFärgerToolStripMenuItem
             // 
             this.standardFärgerToolStripMenuItem.Name = "standardFärgerToolStripMenuItem";
-            this.standardFärgerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.standardFärgerToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.standardFärgerToolStripMenuItem.Text = "Standard färger";
             this.standardFärgerToolStripMenuItem.Click += new System.EventHandler(this.StandardFärgerToolStripMenuItem_Click);
             // 
@@ -353,6 +354,7 @@
         private System.Windows.Forms.ToolStripMenuItem färg2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startaOmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem standardFärgerToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog2;
     }
 }
 

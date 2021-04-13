@@ -37,11 +37,19 @@ namespace Chess_Forms
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (myboard != null)
+                if (myboard != null && colorDialog1.Color != myboard.backcolor2)
                 {
                     myboard.backcolor1 = colorDialog1.Color;
                     myboard.ChangeBackColor();
                     myboard.ChangeRbBackColor();
+                }
+                else if (myboard == null)
+                {
+                    MessageBox.Show("Du måste starta spelet innan du ändrar färg");
+                }
+                else if (colorDialog1.Color == myboard.backcolor2)
+                {
+                    MessageBox.Show("Du valde samma färg på rutorna och då blir det svårt");
                 }
             }
         }
@@ -49,14 +57,22 @@ namespace Chess_Forms
         //ändrar färgen på tiles
         private void Färg2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            if (colorDialog2.ShowDialog() == DialogResult.OK)
             {
-                if (myboard != null)
+                if (myboard != null && colorDialog2.Color != myboard.backcolor1)
                 {
-                    myboard.backcolor2 = colorDialog1.Color;
+                    myboard.backcolor2 = colorDialog2.Color;
                     myboard.ChangeBackColor();
                     myboard.ChangeRbBackColor();
 
+                }
+                else if(myboard != null)
+                {
+                    MessageBox.Show("Du måste starta spelet innan du ändrar färg");
+                }
+                else if (colorDialog2.Color == myboard.backcolor1)
+                {
+                    MessageBox.Show("du valde samma färg på rutorna och då blir det svårt");
                 }
             }
         }
@@ -588,7 +604,7 @@ namespace Chess_Forms
             c = Up(newcell);
             if (c != null && TheGrid[c.Columnnumber, c.Rownumber].Occupied)
                 TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
-            if (c != null && !p.HasMoved)
+            if (c != null && !p.HasMoved && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
             {
                 Up(c);
             }
@@ -611,7 +627,7 @@ namespace Chess_Forms
             c = Down(newcell);
             if (c != null && TheGrid[c.Columnnumber, c.Rownumber].Occupied)
                 TheGrid[c.Columnnumber, c.Rownumber].AllowedMove = false;
-            if (c != null && !p.HasMoved)
+            if (c != null && !p.HasMoved && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
             {
                 Down(c);
             }
@@ -620,11 +636,11 @@ namespace Chess_Forms
 
         private void EnpassantS(Piece p)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         private void EnpassantV(Piece p)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
         #endregion
 
