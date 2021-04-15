@@ -23,16 +23,13 @@ namespace Chess_Forms
             InitializeComponent();
 
         }
-        
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
         Board myboard;
-
+        #region Actions
         //ändrar färgen på tiles
-
         private void Färg1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -107,6 +104,7 @@ namespace Chess_Forms
                 myboard.ChangeRbBackColor();
             }
         }
+        #endregion
     }
     public class Move
     {
@@ -158,6 +156,8 @@ namespace Chess_Forms
                 SPiece.rb.BackColor = Myboard.backcolor1;
             }
             Myboard.IsSchack(SPiece);
+            if (SPiece.name.StartsWith("SBonde") || SPiece.name.StartsWith("VBonde"))
+                Myboard.Promote(SPiece);
         }       
     }
     public class Piece
@@ -577,21 +577,22 @@ namespace Chess_Forms
         }
 
         //hämtar de tillåtna dragen för hästen
-        private void Hast(Cell currentCell, bool v)
+        private void Hast(Cell currentCell)
         {
-            Right2Up1(currentCell, v);
-            Left2Up1(currentCell, v);
-            Left2Down1(currentCell, v);
-            Right1Down2(currentCell, v);
-            Right2Down1(currentCell, v);
-            Right1Up2(currentCell, v);
-            Left1Up2(currentCell, v);
-            Left1Down2(currentCell, v);
+            Right2Up1(currentCell);
+            Left2Up1(currentCell);
+            Left2Down1(currentCell);
+            Right1Down2(currentCell);
+            Right2Down1(currentCell);
+            Right1Up2(currentCell);
+            Left1Up2(currentCell);
+            Left1Down2(currentCell);
         }
 
         //hämtar de tillåtna dragen för vit bonde
-        private void VBonde(Cell newcell, Piece p)
+        private void VBonde( Piece p)
         {
+            Cell newcell = p.currentCell;
             Cell c;
             c = Up_left(newcell);
             if (c != null && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
@@ -613,8 +614,9 @@ namespace Chess_Forms
         }
 
         //hämtar de tillåtna dragen för svart bonde
-        private void SBonde(Cell newcell, Piece p)
+        private void SBonde( Piece p)
         {
+            Cell newcell = p.currentCell;
             Cell c;
             c = Down_left(newcell);
             if (c != null && !TheGrid[c.Columnnumber, c.Rownumber].Occupied)
@@ -1040,7 +1042,7 @@ namespace Chess_Forms
                 resetbtns();
 
                 SelectedPiece = s;
-                Markallowedmove(s.currentCell, s);
+                Markallowedmove( s);
                 for (int x = 0; x < size; x++)
                 {
                     for (int j = 0; j < size; j++)
@@ -1056,8 +1058,9 @@ namespace Chess_Forms
         }
 
         //markerar de tillåtna dragen
-        public void Markallowedmove(Cell currentCell, Piece Selectedpiece)
+        public void Markallowedmove( Piece Selectedpiece)
         {
+            Cell currentCell = SelectedPiece.currentCell;
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
@@ -1098,22 +1101,22 @@ namespace Chess_Forms
                 case "VHäst1":
                 case "VHäst2":
                     //hästen kan gå två steg fram och ett åt sidan
-                    Hast(currentCell, false);
+                    Hast(currentCell);
                     break;
                 case "SHäst1":
                 case "SHäst2":
                     //hästen kan gå två steg fram och ett åt sidan
-                    Hast(currentCell, true);
+                    Hast(currentCell);
                     break;
                 default:
                     if (Selectedpiece.name.StartsWith("VBonde"))
                     {
-                        VBonde(currentCell, Selectedpiece);
+                        VBonde(Selectedpiece);
 
                     }
                     else if (Selectedpiece.name.StartsWith("SBonde"))
                     {
-                        SBonde(currentCell, Selectedpiece);
+                        SBonde(Selectedpiece);
                     }
                     else
                         MessageBox.Show("nu har nått gått väldigt fel!");
@@ -1185,7 +1188,7 @@ namespace Chess_Forms
         {
             Button b = (Button)sender;
             string[] btag = getBtntag(b);
-            //MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
+            MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
             if (SelectedPiece != null)
             {
                 Piece s = SelectedPiece;
@@ -1262,7 +1265,7 @@ namespace Chess_Forms
         internal void IsSchack(Piece sPiece)
         {
             SelectedPiece = sPiece;
-            Markallowedmove(sPiece.currentCell, sPiece);
+            Markallowedmove(sPiece);
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
@@ -1276,6 +1279,30 @@ namespace Chess_Forms
             SelectedPiece = null;
             resetbtns();
 
+        }
+
+        internal void Promote(Piece sPiece)
+        {
+            // Create a new instance of the Form2 class
+            Form Promoteform = new Form();
+
+            // Show the settings form
+            Promoteform.Show();
+            if (sPiece.IsWhite)
+            {
+                if(sPiece.currentCell.Rownumber == 0)
+                {
+
+                }
+
+            }
+            if(!sPiece.IsWhite)
+            {
+                if (sPiece.currentCell.Rownumber == 7)
+                {
+
+                }
+            }
         }
         #endregion
     }
