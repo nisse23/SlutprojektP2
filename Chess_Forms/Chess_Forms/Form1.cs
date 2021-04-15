@@ -349,7 +349,7 @@ namespace Chess_Forms
 
         #region Hästmetoder
         //kollar och markerar ifall cellen ett steg vänster och två steg ner är tillåten       
-        private void Left1Down2(Cell currentCell, bool v)
+        private void Left1Down2(Cell currentCell)
         {
             if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber - 2 >= 0)
             {
@@ -365,7 +365,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen ett steg vänster och två steg upp är tillåten
-        private void Left1Up2(Cell currentCell, bool v)
+        private void Left1Up2(Cell currentCell)
         {
             if (currentCell.Columnnumber - 1 >= 0 && currentCell.Rownumber + 2 < size)
             {
@@ -381,7 +381,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen två steg vänster och ett steg ner är tillåten
-        private void Left2Down1(Cell currentCell, bool v)
+        private void Left2Down1(Cell currentCell)
         {
             if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber - 1 >= 0)
             {
@@ -398,7 +398,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen två steg vänster och ett steg upp är tillåten
-        private void Left2Up1(Cell currentCell, bool v)
+        private void Left2Up1(Cell currentCell)
         {
             if (currentCell.Columnnumber - 2 >= 0 && currentCell.Rownumber + 1 < size)
             {
@@ -414,7 +414,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen ett steg höger och två steg upp är tillåten
-        private void Right1Up2(Cell currentCell, bool v)
+        private void Right1Up2(Cell currentCell)
         {
             if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber + 2 < size)
             {
@@ -430,7 +430,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen ett steg höger och två steg ner är tillåten
-        private void Right1Down2(Cell currentCell, bool v)
+        private void Right1Down2(Cell currentCell)
         {
             if (currentCell.Columnnumber + 1 < size && currentCell.Rownumber - 2 >= 0)
             {
@@ -446,7 +446,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen två steg höger och ett steg ner är tillåten
-        private void Right2Down1(Cell currentCell, bool v)
+        private void Right2Down1(Cell currentCell)
         {
             if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber - 1 >= 0)
             {
@@ -462,7 +462,7 @@ namespace Chess_Forms
         }
 
         //kollar och markerar ifall cellen två steg höger och ett steg upp är tillåten
-        private void Right2Up1(Cell currentCell, bool v)
+        private void Right2Up1(Cell currentCell)
         {
             if (currentCell.Columnnumber + 2 < size && currentCell.Rownumber + 1 < size)
             {
