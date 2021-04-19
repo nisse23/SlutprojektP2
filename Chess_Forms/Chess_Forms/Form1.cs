@@ -121,7 +121,7 @@ namespace Chess_Forms
         //flyttar pjäsen
         public void MovePiece(Button b)
         {
-            string[] sa = Myboard.getBtntag(b);
+            string[] sa = Myboard.GetBtntag(b);
 
             //ändra i array
             int newWidth = int.Parse(sa[1]);
@@ -657,7 +657,7 @@ namespace Chess_Forms
         }
 
         //plaserar ut alla pjäser i arrayn
-        public void placePiecesInStart()
+        public void PlacePiecesInStart()
         {
             #region svartapjäser
             Piece SBonde1 = new Piece("SBonde1", new Cell(0, 1), this);
@@ -794,7 +794,7 @@ namespace Chess_Forms
 
                     buttonGrid[j, i].Width = buttonSize;
                     buttonGrid[j, i].Height = buttonSize;
-                    buttonGrid[j, i].Click += buttonClick;
+                    buttonGrid[j, i].Click += ButtonClick;
 
                     panel1.Controls.Add(buttonGrid[j, i]);
                     buttonGrid[j, i].Location = new Point(j * buttonGrid[j, i].Height, buttonGrid[j, i].Width * i);
@@ -811,7 +811,7 @@ namespace Chess_Forms
         public void GeneratePieces()
         {
             //placerar dem rätt i arrayen
-            placePiecesInStart();
+            PlacePiecesInStart();
 
             //räknar ut storleken på btns. =65
             int pieceSize = panel1.Width / size;
@@ -1039,7 +1039,7 @@ namespace Chess_Forms
             }
             if(t == false)
             {
-                resetbtns();
+                Resetbtns();
 
                 SelectedPiece = s;
                 Markallowedmove( s);
@@ -1049,7 +1049,7 @@ namespace Chess_Forms
                     {
                         Cell cell = TheGrid[j, x];
 
-                        markbtns(cell);
+                        Markbtns(cell);
                         
                     }
                 }
@@ -1125,7 +1125,7 @@ namespace Chess_Forms
         }
 
         //markerar de btns som man får flytta till
-        private void markbtns(Cell cell)
+        private void Markbtns(Cell cell)
         {
             
             if (cell.AllowedMove)
@@ -1150,7 +1150,7 @@ namespace Chess_Forms
                 TheGrid[oldPiece.currentCell.Columnnumber, oldPiece.currentCell.Rownumber].Occupied = false;
                 Move move = new Move(this, newPiece);
                 move.MovePiece(buttonGrid[oldPiece.currentCell.Columnnumber, oldPiece.currentCell.Rownumber]);
-                resetbtns();
+                Resetbtns();
                 if(oldPiece.name.EndsWith("Kung"))
                 {
                     if (newPiece.IsWhite)
@@ -1180,14 +1180,14 @@ namespace Chess_Forms
                     TheGrid[j, i].OccupiedBy = null;
                 }
             }
-            resetbtns();
+            Resetbtns();
         }
 
         //när man klickar på en button triggas denna
-        private void buttonClick(object sender, EventArgs e)
+        private void ButtonClick(object sender, EventArgs e)
         {
             Button b = (Button)sender;
-            string[] btag = getBtntag(b);
+            string[] btag = GetBtntag(b);
             MessageBox.Show(btag[0] + " " + btag[1] + " occ: " + TheGrid[int.Parse(btag[0]), int.Parse(btag[1])].Occupied);
             if (SelectedPiece != null)
             {
@@ -1196,7 +1196,7 @@ namespace Chess_Forms
                 {
                     Move m = new Move(this, s);
                     m.MovePiece(b);
-                    resetbtns();
+                    Resetbtns();
                 }
                     
                 
@@ -1204,7 +1204,7 @@ namespace Chess_Forms
         }
 
         //tar bort den tillåtna markeringen på knapparna och radiobtns
-        private void resetbtns()
+        private void Resetbtns()
         {
             //tar bort indikatorn och ändrar statusen på cellen
             for (int z = 0; z < size; z++)
@@ -1220,7 +1220,7 @@ namespace Chess_Forms
         }
 
         //hämtar tagen från en knapp
-        public string[] getBtntag(Button b)
+        public string[] GetBtntag(Button b)
         {
             string str = (string)b.Tag;
 
@@ -1277,14 +1277,29 @@ namespace Chess_Forms
                 }
             }
             SelectedPiece = null;
-            resetbtns();
+            Resetbtns();
 
         }
 
-        internal void Promote(Piece sPiece)
+        public void Promote(Piece sPiece)
         {
             // Create a new instance of the Form2 class
             Form Promoteform = new Form();
+            Promoteform.Width = 250;
+            Promoteform.Height = 250;
+
+            ListBox txt = new ListBox();
+            txt.Items.Add("Häst");
+            txt.Items.Add("Torn");
+            txt.Items.Add("Löpare");
+            txt.Items.Add("Drottning");
+            txt.Height = 60;
+            Promoteform.Controls.Add(txt);
+            txt.Location = new Point(10, 10);
+            
+            //string s = txt.SelectedItem.ToString();
+            //sPiece.name
+
 
             // Show the settings form
             Promoteform.Show();
@@ -1303,7 +1318,9 @@ namespace Chess_Forms
 
                 }
             }
+            
         }
+
         #endregion
     }
     public class Cell
