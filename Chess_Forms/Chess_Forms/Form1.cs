@@ -28,7 +28,7 @@ namespace Chess_Forms
 
         }
         Board myboard;
-        #region Actions
+        #region Events
         //ändrar färgen på tiles
         private void Färg1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
