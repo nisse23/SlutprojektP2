@@ -7,13 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
-//TO DO
-// promota bönder
-// enpassent
-// rockad
-// fixa UI
 namespace Chess_Forms
 {
     public partial class Form1 : Form

@@ -3,11 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-//TO DO
-// promota bönder
-// enpassent
-// rockad
-// fixa UI
 namespace Chess_Forms
 {
     public class Board
