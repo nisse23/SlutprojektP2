@@ -432,8 +432,6 @@ namespace Chess_Forms
             {
                 Up(c);
             }
-            EnpassantV(p);
-
         }
 
         //hämtar de tillåtna dragen för svart bonde
@@ -456,16 +454,6 @@ namespace Chess_Forms
             {
                 Down(c);
             }
-            EnpassantS(p);
-        }
-
-        private void EnpassantS(Piece p)
-        {
-            //throw new NotImplementedException();
-        }
-        private void EnpassantV(Piece p)
-        {
-           // throw new NotImplementedException();
         }
         #endregion
 
